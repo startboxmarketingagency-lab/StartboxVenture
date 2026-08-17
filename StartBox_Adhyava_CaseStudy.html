@@ -1,0 +1,940 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adhyava · Case Study — StartBox Ventures</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,200;1,9..144,300&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+
+<style>
+/* ─── TOKENS — copied exactly from StartBox V9 ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+
+:root{
+  --white:#FFFFFF;
+  --off:#F7F5F0;
+  --ink:#09090B;
+  --ink2:rgba(9,9,11,.46);
+  --ink3:rgba(9,9,11,.1);
+  --gold:#C4992A;
+  --navy:#08152B;
+  --navy2:#0A1E35;
+  --s1:#0A2240;
+  --f:'Fraunces',Georgia,serif;
+  --s:'Satoshi',system-ui,sans-serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+body{
+  font-family:var(--s);
+  background:var(--white);
+  color:var(--ink);
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+
+/* ─── NAV — identical to StartBox ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:500;
+  height:64px;display:flex;align-items:center;justify-content:space-between;
+  padding:0 56px;
+  transition:background .35s,border-color .35s;
+  border-bottom:1px solid transparent;
+  background:var(--white);
+  border-color:var(--ink3);
+}
+
+
+
+
+.n-back::before{content:'←';font-size:11px}
+
+/* ─── SCROLL REVEAL (mirrors StartBox .rv) ─── */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.in{opacity:1;transform:none}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}
+
+/* ─────────────────────────────────────────────
+   HERO  —  dark navy, same as StartBox
+───────────────────────────────────────────── */
+.cs-hero{
+  min-height:80svh;padding-top:64px;
+  display:flex;flex-direction:column;justify-content:space-between;
+  position:relative;overflow:hidden;
+  background:linear-gradient(-45deg,#040607,#08152B,#050D1F,#0C1C30);
+  background-size:400% 400%;
+  animation:gradshift 18s ease infinite;
+}
+@keyframes gradshift{0%{background-position:0 50%}50%{background-position:100% 50%}100%{background-position:0 50%}}
+
+.cs-hero::before{
+  content:'';position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,255,255,.03) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(255,255,255,.03) 1px,transparent 1px);
+  background-size:60px 60px;pointer-events:none;
+}
+
+.cs-hero-content{
+  flex:1;display:flex;flex-direction:column;justify-content:center;
+  padding:80px clamp(20px,5vw,56px) 48px;position:relative;z-index:2;
+}
+
+/* breadcrumb pill */
+.cs-crumb{
+  display:inline-flex;align-items:center;gap:10px;
+  font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:36px;
+}
+.cs-crumb::before{content:'';width:16px;height:1px;background:var(--gold)}
+
+/* Tags */
+.cs-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:32px}
+.cs-tag{
+  font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+  padding:5px 14px;border:1px solid rgba(255,255,255,.1);
+  color:rgba(255,255,255,.4);
+}
+.cs-tag.gold{border-color:var(--gold);color:var(--gold)}
+
+/* Big headline — Satoshi 900 like StartBox hero */
+.cs-h1{
+  font-family:var(--s);
+  font-size:clamp(32px,5.2vw,76px);
+  font-weight:900;line-height:1;letter-spacing:-.04em;
+  color:#fff;margin-bottom:28px;
+  max-width:820px;
+}
+.cs-h1 .g{color:var(--gold)}
+
+.cs-lede{
+  font-size:16px;font-weight:400;
+  color:rgba(255,255,255,.38);line-height:1.7;max-width:480px;
+  margin-bottom:0;
+}
+
+/* Stats bar — same as StartBox hero-stats */
+.cs-stats{
+  display:flex;position:relative;z-index:2;
+  border-top:1px solid rgba(255,255,255,.07);
+}
+.cs-stat{
+  flex:1;padding:24px 32px;
+  border-right:1px solid rgba(255,255,255,.07);
+}
+.cs-stat:last-child{border-right:none}
+.cs-stat-n{
+  font-family:var(--s);font-size:clamp(20px,2.6vw,32px);font-weight:900;
+  line-height:1;color:#fff;
+}
+.cs-stat-n.g{color:var(--gold)}
+.cs-stat-l{font-size:9px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);margin-top:5px}
+
+@media(max-width:680px){
+  .cs-hero-content{padding:60px 28px 36px}
+  .cs-stats{flex-wrap:wrap}
+  .cs-stat{flex:1 1 50%;border-bottom:1px solid rgba(255,255,255,.07)}
+}
+
+/* ─────────────────────────────────────────────
+   BELIEF-STYLE INTRO  (white, matches belief section)
+───────────────────────────────────────────── */
+.cs-intro{
+  padding:100px clamp(20px,5vw,56px);
+  background:var(--white);
+  border-bottom:1px solid var(--ink3);
+}
+.cs-intro-q{
+  font-family:var(--s);
+  font-size:clamp(22px,3.6vw,44px);
+  font-weight:700;line-height:1.18;letter-spacing:-.025em;
+  color:var(--ink);margin-bottom:12px;max-width:820px;
+}
+.cs-intro-q .g{color:var(--gold)}
+.cs-intro-attr{
+  font-family:var(--s);font-size:13px;color:var(--ink2);margin-bottom:72px;
+}
+/* Three-column defs grid — same as StartBox .defs */
+.cs-defs{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border-top:1px solid var(--ink3)}
+@media(max-width:680px){.cs-defs{grid-template-columns:1fr}}
+.cs-def{padding:36px 32px;border-right:1px solid var(--ink3)}
+.cs-def:last-child{border-right:none}
+@media(max-width:680px){.cs-def{border-right:none;border-bottom:1px solid var(--ink3)}}
+.cs-def-bar{width:24px;height:2px;background:var(--gold);margin-bottom:14px}
+.cs-def-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);margin-bottom:9px}
+.cs-def-neg{font-size:12px;color:rgba(9,9,11,.28);margin-bottom:8px;font-style:italic}
+.cs-def-pos{font-size:13px;color:var(--ink2);line-height:1.75}
+
+/* ─────────────────────────────────────────────
+   DIAGNOSIS SECTION  (studio-style, off-white)
+───────────────────────────────────────────── */
+.cs-diag{
+  background:var(--off);
+  border-bottom:1px solid var(--ink3);
+  position:relative;overflow:hidden;
+}
+.cs-diag-bg{
+  position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  font-family:var(--s);font-size:clamp(120px,18vw,220px);
+  font-weight:900;line-height:1;letter-spacing:-.05em;
+  pointer-events:none;user-select:none;
+  color:var(--s1);opacity:.025;
+}
+.cs-diag-inner{
+  padding:100px clamp(20px,5vw,56px);
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;
+  position:relative;z-index:1;
+}
+@media(max-width:760px){.cs-diag-inner{grid-template-columns:1fr;gap:48px;padding:60px 28px}}
+
+.cs-section-num{
+  font-family:var(--s);font-size:11px;font-weight:700;
+  letter-spacing:.12em;color:var(--ink2);margin-bottom:28px;
+  display:flex;align-items:center;gap:5px;
+}
+.cs-section-num .cur{color:var(--ink)}
+
+.cs-section-h{
+  font-family:var(--s);
+  font-size:clamp(40px,5.5vw,72px);
+  font-weight:900;line-height:.9;letter-spacing:-.05em;
+  color:var(--s1);
+  margin-bottom:8px;
+}
+.cs-section-role{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink2);margin-bottom:28px}
+
+.cs-pull{
+  font-size:15px;font-weight:500;line-height:1.65;color:var(--ink);
+  margin-bottom:24px;padding-left:14px;
+  border-left:2px solid rgba(10,34,64,.18);
+}
+.cs-body-text{font-size:13px;color:var(--ink2);line-height:1.8;max-width:380px}
+
+/* Four-quad diagnosis grid */
+.diag-quads{display:flex;flex-direction:column;gap:0}
+.dq{padding:20px 24px;border-bottom:1px solid var(--ink3)}
+.dq:last-child{border-bottom:none}
+.dq-head{
+  font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  margin-bottom:10px;display:flex;align-items:center;gap:8px;
+}
+.dq-head::before{content:'';width:18px;height:1px}
+.dq.kill .dq-head{color:#8B4A00}
+.dq.kill .dq-head::before{background:#8B4A00}
+.dq.keep .dq-head{color:#145A3A}
+.dq.keep .dq-head::before{background:#145A3A}
+.dq.fix  .dq-head{color:var(--s1)}
+.dq.fix  .dq-head::before{background:var(--s1)}
+.dq.bld  .dq-head{color:#5B1A6E}
+.dq.bld  .dq-head::before{background:#5B1A6E}
+.dq ul{padding-left:16px}
+.dq li{font-size:13px;color:var(--ink2);line-height:1.65;margin-bottom:5px}
+
+/* ─────────────────────────────────────────────
+   POSITIONING  (white, studio 02 feel)
+───────────────────────────────────────────── */
+.cs-pos{
+  background:var(--white);
+  border-bottom:1px solid var(--ink3);
+  position:relative;overflow:hidden;
+}
+.cs-pos-bg{
+  position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  font-family:var(--s);font-size:clamp(120px,18vw,220px);
+  font-weight:900;line-height:1;letter-spacing:-.05em;
+  pointer-events:none;user-select:none;
+  color:#0A3828;opacity:.025;
+}
+.cs-pos-inner{
+  padding:100px clamp(20px,5vw,56px);
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;
+  position:relative;z-index:1;
+}
+@media(max-width:760px){.cs-pos-inner{grid-template-columns:1fr;gap:48px;padding:60px 28px}}
+
+.cs-pos .cs-section-h{color:#0A3828}
+.cs-pos .cs-pull{border-left-color:rgba(10,56,40,.2)}
+
+/* The brand promise block */
+.promise-block{
+  background:var(--navy);padding:32px 28px;margin-bottom:28px;
+  border-left:3px solid var(--gold);
+}
+.promise-label{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:14px;
+}
+.promise-text{
+  font-family:var(--s);font-size:clamp(16px,2.2vw,22px);
+  font-weight:700;line-height:1.4;color:#fff;letter-spacing:-.02em;
+}
+
+/* ICP tiers — service list style */
+.icp-list{display:flex;flex-direction:column;margin-bottom:28px}
+.icp-row{
+  padding:16px 0;border-bottom:1px solid var(--ink3);
+  display:grid;grid-template-columns:80px 1fr;gap:16px;align-items:start;
+}
+.icp-row:first-child{border-top:1px solid var(--ink3)}
+.icp-num{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);padding-top:2px}
+.icp-content h4{font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px}
+.icp-content p{font-size:12px;color:var(--ink2);line-height:1.6}
+.icp-content small{font-size:11px;color:var(--gold);font-weight:600;display:block;margin-top:5px}
+
+/* ─────────────────────────────────────────────
+   STRATEGY  (off-white, studio 03 feel)
+───────────────────────────────────────────── */
+.cs-strat{
+  background:var(--off);
+  border-bottom:1px solid var(--ink3);
+  position:relative;overflow:hidden;
+}
+.cs-strat-bg{
+  position:absolute;right:24px;top:50%;transform:translateY(-50%);
+  font-family:var(--s);font-size:clamp(120px,18vw,220px);
+  font-weight:900;line-height:1;letter-spacing:-.05em;
+  pointer-events:none;user-select:none;
+  color:#6B1B2E;opacity:.025;
+}
+.cs-strat-inner{
+  padding:100px clamp(20px,5vw,56px);
+  display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start;
+  position:relative;z-index:1;
+}
+@media(max-width:760px){.cs-strat-inner{grid-template-columns:1fr;gap:48px;padding:60px 28px}}
+
+.cs-strat .cs-section-h{color:#6B1B2E}
+.cs-strat .cs-pull{border-left-color:rgba(107,27,46,.18)}
+
+/* Strategy moves — svc list style */
+.strat-moves{display:flex;flex-direction:column;margin-bottom:28px}
+.strat-move{
+  font-size:14px;font-weight:400;color:var(--ink);
+  padding:13px 0;border-bottom:1px solid var(--ink3);
+  display:flex;justify-content:space-between;align-items:flex-start;gap:16px;
+}
+.strat-move:first-child{border-top:1px solid var(--ink3)}
+.strat-move-right{text-align:right;flex-shrink:0}
+.strat-move-tag{font-size:10px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:rgba(9,9,11,.22)}
+.strat-move p{font-size:12px;color:var(--ink2);line-height:1.6;margin-top:5px;max-width:220px;text-align:left}
+
+/* For-whom block (matches .s-for) */
+.cs-for{padding:20px 24px;background:rgba(9,9,11,.04);margin-bottom:24px}
+.cs-for p{font-size:13px;color:var(--ink2);line-height:1.7}
+.cs-for p strong{color:var(--ink);font-weight:600}
+
+/* ─────────────────────────────────────────────
+   90-DAY ROADMAP  (white, proof-style)
+───────────────────────────────────────────── */
+.cs-road{
+  background:var(--white);
+  padding:100px clamp(20px,5vw,56px);
+  border-bottom:1px solid var(--ink3);
+}
+@media(max-width:680px){.cs-road{padding:60px 28px}}
+
+.road-label{
+  font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ink2);margin-bottom:12px;
+}
+.road-h{
+  font-family:var(--s);
+  font-size:clamp(22px,3.6vw,44px);
+  font-weight:700;line-height:1.18;letter-spacing:-.025em;
+  color:var(--ink);margin-bottom:12px;max-width:640px;
+}
+.road-sub{font-size:13px;color:var(--ink2);margin-bottom:64px;max-width:440px;line-height:1.7}
+
+/* Three phase columns */
+.road-phases{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--ink3)}
+@media(max-width:680px){.road-phases{grid-template-columns:1fr}}
+.phase{padding:32px 28px;border-right:1px solid var(--ink3);position:relative}
+.phase:last-child{border-right:none}
+@media(max-width:680px){.phase{border-right:none;border-bottom:1px solid var(--ink3)}}
+.phase-days{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:10px}
+.phase-name{
+  font-family:var(--s);font-size:22px;font-weight:900;
+  letter-spacing:-.03em;color:var(--ink);margin-bottom:16px;line-height:1;
+}
+.phase ul{padding-left:0;list-style:none;display:flex;flex-direction:column;gap:0}
+.phase li{
+  font-size:13px;color:var(--ink2);line-height:1.65;
+  padding:9px 0;border-bottom:1px solid var(--ink3);
+  display:flex;gap:10px;align-items:flex-start;
+}
+.phase li:last-child{border-bottom:none}
+.phase li::before{content:'→';color:var(--gold);flex-shrink:0;font-size:11px;margin-top:2px}
+.phase-kpi{
+  margin-top:20px;padding:14px 16px;
+  background:var(--off);
+  font-size:12px;color:var(--ink2);line-height:1.6;
+}
+.phase-kpi strong{color:var(--ink);display:block;font-size:12px;font-weight:700;margin-bottom:4px}
+
+/* ─────────────────────────────────────────────
+   DELIVERABLES  (off-white proof-style)
+───────────────────────────────────────────── */
+.cs-del{
+  background:var(--off);
+  padding:80px clamp(20px,5vw,56px);
+  border-bottom:1px solid var(--ink3);
+}
+@media(max-width:680px){.cs-del{padding:60px 28px}}
+
+.del-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);margin-bottom:48px}
+.del-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--ink3)}
+@media(max-width:680px){.del-grid{grid-template-columns:1fr}}
+.del-item{padding:32px 28px;border-right:1px solid var(--ink3)}
+.del-item:last-child{border-right:none;grid-column:1/-1;border-top:1px solid var(--ink3);padding:32px 28px}
+@media(max-width:680px){
+  .del-item{border-right:none;border-bottom:1px solid var(--ink3)}
+  .del-item:last-child{grid-column:auto;border-bottom:none}
+}
+.del-bar{width:24px;height:2px;background:var(--gold);margin-bottom:14px}
+.del-name{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink2);margin-bottom:9px}
+.del-title{font-size:15px;font-weight:700;color:var(--ink);margin-bottom:8px}
+.del-desc{font-size:13px;color:var(--ink2);line-height:1.75}
+
+/* The first move — dark callout */
+.first-move{
+  background:var(--navy);padding:40px 40px;
+  border-top:1px solid rgba(255,255,255,.06);
+}
+.fm-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:14px}
+.fm-text{
+  font-family:var(--s);font-size:clamp(15px,2vw,20px);
+  font-weight:700;line-height:1.5;color:#fff;
+  letter-spacing:-.02em;max-width:680px;
+}
+
+/* ─────────────────────────────────────────────
+   CTA CLOSE  (dark, matches StartBox .cta)
+───────────────────────────────────────────── */
+.cs-cta{
+  background:var(--navy);padding:100px clamp(20px,5vw,56px);
+  text-align:center;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+@media(max-width:680px){.cs-cta{padding:72px 28px}}
+.cta-label{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+.cta-h{
+  font-family:var(--s);
+  font-size:clamp(28px,5vw,64px);
+  font-weight:900;line-height:1;letter-spacing:-.04em;
+  color:#fff;margin-bottom:20px;
+}
+.cta-sub{font-size:16px;color:rgba(255,255,255,.38);line-height:1.7;max-width:460px;margin:0 auto 40px}
+.cta-acts{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+.btn-wa{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;background:var(--gold);
+  font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--navy);text-decoration:none;
+  transition:opacity .2s;
+}
+.btn-wa:hover{opacity:.85}
+.btn-em{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:14px 28px;border:1px solid rgba(255,255,255,.15);
+  font-size:13px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;
+  color:rgba(255,255,255,.6);text-decoration:none;
+  transition:border-color .2s,color .2s;
+}
+.btn-em:hover{border-color:var(--gold);color:var(--gold)}
+
+/* ─────────────────────────────────────────────
+   FOOTER  (identical to StartBox footer)
+───────────────────────────────────────────── */
+
+@media(max-width:680px){}
+
+@media(max-width:760px){}
+@media(max-width:480px){}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Fixed WA fab */
+
+
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;transition:background .35s,border-color .35s;border-bottom:1px solid transparent;}
+nav.dark{background:rgba(8,8,8,.94);backdrop-filter:blur(24px);border-color:rgba(255,255,255,.05);}
+nav.light{background:#fff;border-color:rgba(9,9,11,.1);}
+@media(max-width:680px){nav{padding:0 20px;}}
+.n-logo{font-family:'Satoshi',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .2s;}
+nav.dark .n-logo{color:#fff;}
+nav.light .n-logo{color:#09090B;}
+.n-logo b{color:#C4992A;}
+.n-back{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.55);transition:color .2s;}
+nav.dark .n-back{color:rgba(255,255,255,.55);}
+nav.light .n-back{color:rgba(9,9,11,.46);}
+.n-back:hover{color:#C4992A;}
+
+/* ── FOOTER ── */
+footer{background:#030508;padding:56px clamp(20px,5vw,56px) 36px;border-top:1px solid rgba(255,255,255,.05);}
+.ft-g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.ft-logo{font-family:'Satoshi',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:10px;}
+.ft-logo b{color:#C4992A;}
+.ft-desc{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:220px;margin-bottom:16px;}
+.ft-dots{display:flex;gap:6px;}
+.fd{width:6px;height:6px;border-radius:50%;}
+.ft-col h4{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:14px;}
+.ft-col ul{list-style:none;}
+.ft-col li{margin-bottom:10px;}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.ft-col a:hover{color:#fff;}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);}
+.ft-note{font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.14);}
+@media(max-width:760px){.ft-g{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.ft-g{grid-template-columns:1fr;}footer{padding:44px 20px 28px;}}
+
+/* ── FIXED CONTACT FABS ── */
+.fabs{position:fixed;bottom:24px;right:24px;z-index:600;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.fab{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+.fab:hover{transform:scale(1.1);}
+.fab-wa{background:#25D366;box-shadow:0 4px 16px rgba(37,211,102,.35);}
+.fab-li{background:#0A66C2;box-shadow:0 4px 16px rgba(10,102,194,.35);}
+.fab-mail{background:#C4992A;box-shadow:0 4px 16px rgba(196,153,42,.35);}
+@media(max-width:480px){.fabs{bottom:16px;right:16px;gap:8px;}.fab{width:44px;height:44px;}}
+
+/* ── RESPONSIVE BASE ── */
+*,*::before,*::after{box-sizing:border-box;}
+html{font-size:16px;}
+img,video,svg{max-width:100%;height:auto;}
+@media(max-width:960px){
+  [class*="grid"]{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media(max-width:600px){
+  [class*="grid"]{grid-template-columns:1fr!important;}
+  [style*="padding:100px clamp(20px,5vw,56px)"],[style*="padding:80px clamp(20px,5vw,56px)"]{padding:60px 20px!important;}
+}
+
+</style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav id="snav" class="dark">
+  <a href="index.html" class="n-logo">Start<b>Box</b></a>
+  <a href="strategy-lab.html" class="n-back">← Strategy Lab</a>
+</nav>
+
+<!-- ═══════════════════════════
+  HERO
+═══════════════════════════ -->
+<section class="cs-hero">
+  <div class="cs-hero-content">
+    <p class="cs-crumb">Case Study · The Strategist</p>
+    <div class="cs-tags">
+      <span class="cs-tag">Go-To-Market Strategy</span>
+      <span class="cs-tag">Brand Positioning</span>
+      <span class="cs-tag">Deep Tech · B2B</span>
+      <span class="cs-tag gold">Adhyava Research &amp; Technologies</span>
+    </div>
+    <h1 class="cs-h1">We named a category<br>before anyone else <span class="g">could.</span></h1>
+    <p class="cs-lede">A full go-to-market strategy for an AI + IoT road safety startup targeting India's private infrastructure sector — built from zero to first pipeline in 90 days.</p>
+  </div>
+
+  <div class="cs-stats">
+    <div class="cs-stat">
+      <div class="cs-stat-n g">₹111L Cr</div>
+      <div class="cs-stat-l">Market we positioned them into</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n">3-Tier</div>
+      <div class="cs-stat-l">ICP framework built</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n">90 Days</div>
+      <div class="cs-stat-l">Zero to first signed pilots</div>
+    </div>
+    <div class="cs-stat">
+      <div class="cs-stat-n g">1 Category</div>
+      <div class="cs-stat-l">"Road Intelligence" — owned</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  BELIEF-STYLE INTRO
+═══════════════════════════ -->
+<section class="cs-intro">
+  <div class="rv">
+    <blockquote class="cs-intro-q">
+      "World-class research.<br>Zero commercial story.<br>We fixed <span class="g">both.</span>"
+    </blockquote>
+    <p class="cs-intro-attr">This is what The Strategist is built for.</p>
+  </div>
+  <div class="cs-defs rv d1">
+    <div class="cs-def">
+      <div class="cs-def-bar"></div>
+      <p class="cs-def-label">The Client</p>
+      <p class="cs-def-neg">Not just an AI company. Not just IoT. Not just a research lab.</p>
+      <p class="cs-def-pos">Adhyava Research &amp; Technologies — an early-stage deep tech company with AI-powered road asset monitoring, computer vision, IoT sensors, and a flagship product called iRAMA. Excellent product. No commercial traction yet.</p>
+    </div>
+    <div class="cs-def">
+      <div class="cs-def-bar"></div>
+      <p class="cs-def-label">The Problem</p>
+      <p class="cs-def-neg">Not a product problem. Not a technology problem.</p>
+      <p class="cs-def-pos">They were speaking the language of researchers to an audience of project directors and CEOs. The translation was missing. Private EPC companies don't buy research — they buy risk reduction and proof.</p>
+    </div>
+    <div class="cs-def">
+      <div class="cs-def-bar"></div>
+      <p class="cs-def-label">The Brief</p>
+      <p class="cs-def-neg">Not branding. Not a campaign. Not a content calendar.</p>
+      <p class="cs-def-pos">A full go-to-market strategy targeting private infrastructure companies — EPC contractors and PMCs executing India's national highway buildout. Stage: early. Goal: first pipeline in 90 days.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  01 · DIAGNOSIS
+═══════════════════════════ -->
+<section class="cs-diag">
+  <div class="cs-diag-bg">01</div>
+  <div class="cs-diag-inner rv">
+    <div>
+      <p class="cs-section-num"><span class="cur">01</span> / 04</p>
+      <h2 class="cs-section-h">Diag&shy;nosis</h2>
+      <p class="cs-section-role">StartBox always diagnoses before prescribing</p>
+      <p class="cs-pull">"If we are not honest about what is broken, we cannot fix the right thing."</p>
+      <p class="cs-body-text">Before building anything, we ran a four-lens brand audit. What needed to die. What needed to be protected. What needed urgent repair. What needed to be built from nothing. Most agencies skip this and go straight to execution. We don't.</p>
+    </div>
+    <div>
+      <div class="diag-quads">
+        <div class="dq kill">
+          <div class="dq-head">Repositioned immediately</div>
+          <ul>
+            <li>"Research company" identity — signals academic, not commercial</li>
+            <li>Jargon-heavy copy written for engineers, not buyers</li>
+            <li>No category claim — invisible in a crowded AI market</li>
+          </ul>
+        </div>
+        <div class="dq keep">
+          <div class="dq-head">Never touched</div>
+          <ul>
+            <li>Research credibility — a genuine moat, just misdirected</li>
+            <li>The iRAMA product name — specific, memorable, defensible</li>
+            <li>Multi-vertical capability: road, school zone, roundabout, GIS</li>
+          </ul>
+        </div>
+        <div class="dq fix">
+          <div class="dq-head">Fixed urgently</div>
+          <ul>
+            <li>JS-rendered website — invisible to every search engine</li>
+            <li>No case studies, no social proof, no named buyer visible</li>
+            <li>No CTA or purchase pathway for a private infra buyer</li>
+          </ul>
+        </div>
+        <div class="dq bld">
+          <div class="dq-head">Built from zero</div>
+          <ul>
+            <li>Thought leadership content engine — reports, indices, data papers</li>
+            <li>Pilot-friendly commercial model for early traction</li>
+            <li>Outbound motion targeting infrastructure CXOs directly</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  02 · POSITIONING
+═══════════════════════════ -->
+<section class="cs-pos">
+  <div class="cs-pos-bg">02</div>
+  <div class="cs-pos-inner rv">
+    <div>
+      <p class="cs-section-num"><span class="cur">02</span> / 04</p>
+      <h2 class="cs-section-h">Posi&shy;tion&shy;ing</h2>
+      <p class="cs-section-role">Naming the category before a competitor could</p>
+      <p class="cs-pull">"Features get compared on price. Categories get owned."</p>
+      <p class="cs-body-text">The single most important decision: stop calling Adhyava an "AI solutions company" and position it as a <strong>Road Intelligence company</strong>. One category claim. Specific. Defensible. Immediately legible to a buyer who builds roads for a living. Then we built who to sell to — and in what order.</p>
+    </div>
+    <div>
+      <div class="promise-block">
+        <div class="promise-label">Brand Promise — One Line</div>
+        <div class="promise-text">"We turn India's roads into data — so infrastructure companies build safer, win more, and prove it."</div>
+      </div>
+
+      <div class="icp-list">
+        <div class="icp-row">
+          <div class="icp-num">Tier 01<br>Win First</div>
+          <div class="icp-content">
+            <h4>Mid-sized EPC Road Contractors</h4>
+            <p>₹500Cr–₹5,000Cr turnover. Active on NHAI projects. Under pressure to demonstrate safety compliance. Reachable, decision-fast, hungry for digital differentiation.</p>
+            <small>→ Dilip Buildcon · PNC Infratech · KNR Constructions</small>
+          </div>
+        </div>
+        <div class="icp-row">
+          <div class="icp-num">Tier 02<br>Scale Into</div>
+          <div class="icp-content">
+            <h4>Project Management Consultants</h4>
+            <p>Technical advisors hired by NHAI and state bodies. If they recommend iRAMA, demand cascades downstream to every EPC client they supervise.</p>
+            <small>→ STUP · Louis Berger · AECOM India · ICT Pvt. Ltd.</small>
+          </div>
+        </div>
+        <div class="icp-row">
+          <div class="icp-num">Tier 03<br>Harvest Later</div>
+          <div class="icp-content">
+            <h4>Large Integrated Infra Groups</h4>
+            <p>Long sales cycles. Massive contract sizes. Approach only after 3–5 Tier 1 reference wins are in hand. These names validate the category; they don't start it.</p>
+            <small>→ L&amp;T Infra · Tata Projects · Adani Road</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  03 · GTM STRATEGY
+═══════════════════════════ -->
+<section class="cs-strat">
+  <div class="cs-strat-bg">03</div>
+  <div class="cs-strat-inner rv">
+    <div>
+      <p class="cs-section-num"><span class="cur">03</span> / 04</p>
+      <h2 class="cs-section-h">Strat&shy;egy</h2>
+      <p class="cs-section-role">Four moves that compound, not cancel</p>
+      <p class="cs-pull">"In a trust-driven sector, every channel must earn its cost before we recommend it."</p>
+      <p class="cs-body-text">We designed a GTM built on proof, not promotion. Private infra buyers are technically sophisticated and commercially cautious. You earn them with data about their projects — not ads about yours. One firm rule: no free pilots. Even a nominal fee signals commercial seriousness and makes the buyer take the relationship seriously.</p>
+
+      <div class="cs-for">
+        <p><strong>Channel priority verdict:</strong> Direct outbound with research-led hooks · Thought leadership as pipeline · PMC partner channel · Paid digital held until Month 9.</p>
+      </div>
+    </div>
+    <div>
+      <div class="strat-moves">
+        <div class="strat-move">
+          <div>
+            <strong>Research-Led Outbound</strong>
+            <p>"We analysed 42km of roads like your Rajkot stretch — want the findings?" leads to meetings no cold pitch can. Adhyava's research engine is the unfair advantage.</p>
+          </div>
+          <div class="strat-move-right">
+            <span class="strat-move-tag">Priority 01</span>
+          </div>
+        </div>
+        <div class="strat-move">
+          <div>
+            <strong>Thought Leadership as Pipeline</strong>
+            <p>Annual India Road Intelligence Report. School Zone Safety Index by city. The goal: most-cited source in road safety data in India within 18 months.</p>
+          </div>
+          <div class="strat-move-right">
+            <span class="strat-move-tag">Priority 02</span>
+          </div>
+        </div>
+        <div class="strat-move">
+          <div>
+            <strong>PMC Partner Channel</strong>
+            <p>One PMC relationship unlocks their entire client portfolio. Co-branded reporting program makes recommending iRAMA easy and natural.</p>
+          </div>
+          <div class="strat-move-right">
+            <span class="strat-move-tag">Priority 03</span>
+          </div>
+        </div>
+        <div class="strat-move">
+          <div>
+            <strong>Three-Product Commercial Model</strong>
+            <p>Entry: Road Intelligence Snapshot (₹2–8L). Core: iRAMA platform license (₹15–50L/year). Anchor: Safety Intelligence Partnership (₹75L–₹2Cr).</p>
+          </div>
+          <div class="strat-move-right">
+            <span class="strat-move-tag">Priority 04</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  04 · 90-DAY ROADMAP
+═══════════════════════════ -->
+<section class="cs-road">
+  <p class="road-label rv">04 / 04 — The Activation Plan</p>
+  <h2 class="road-h rv d1">90 days.<br>Zero to signed pilots.</h2>
+  <p class="road-sub rv d2">Strategy that doesn't end with execution instructions is just a document. We handed Adhyava a week-by-week plan, not a slide deck.</p>
+
+  <div class="road-phases rv d3">
+    <div class="phase">
+      <div class="phase-days">Days 1–30</div>
+      <div class="phase-name">Foundation</div>
+      <ul>
+        <li>Category name and brand promise finalised internally</li>
+        <li>Website rebuilt with static rendering — visible to search</li>
+        <li>1-page "Adhyava Brief" PDF created for outreach</li>
+        <li>50 Tier 1 target accounts identified with named contacts</li>
+        <li>First thought leadership piece published</li>
+      </ul>
+      <div class="phase-kpi">
+        <strong>KPI</strong>
+        Website live · 50 accounts mapped · Content piece published
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-days">Days 31–60</div>
+      <div class="phase-name">Outreach</div>
+      <ul>
+        <li>Research-led outreach to 50 target accounts</li>
+        <li>Free "Road Intelligence Snapshot" sent to 10 priority prospects</li>
+        <li>8–12 discovery calls booked</li>
+        <li>3–5 PMC partnership meetings initiated</li>
+        <li>Every objection documented — becomes the messaging bible</li>
+      </ul>
+      <div class="phase-kpi">
+        <strong>KPI</strong>
+        12+ calls booked · 3 PMC meetings · 1 speaking opp confirmed
+      </div>
+    </div>
+    <div class="phase">
+      <div class="phase-days">Days 61–90</div>
+      <div class="phase-name">Convert</div>
+      <ul>
+        <li>2–3 discovery calls converted to paid pilots</li>
+        <li>Pilots scoped as deliverable reports — shareable internally</li>
+        <li>Written testimonials secured from pilot clients</li>
+        <li>First case study published</li>
+        <li>Anchor client identified — the name that unlocks five more</li>
+      </ul>
+      <div class="phase-kpi">
+        <strong>KPI</strong>
+        2+ pilots live · 1 case study out · ₹15–25L signed
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  DELIVERABLES
+═══════════════════════════ -->
+<section class="cs-del">
+  <p class="del-label rv">What StartBox delivered</p>
+  <div class="del-grid rv d1">
+    <div class="del-item">
+      <div class="del-bar"></div>
+      <p class="del-name">01</p>
+      <p class="del-title">Brand Audit + Diagnosis</p>
+      <p class="del-desc">Four-lens analysis of what to kill, keep, fix, and build — with specific, actionable reasoning for every call. No surface-level observations.</p>
+    </div>
+    <div class="del-item">
+      <div class="del-bar"></div>
+      <p class="del-name">02</p>
+      <p class="del-title">Category Naming + Brand Promise</p>
+      <p class="del-desc">"Road Intelligence" as the owned category. One-line brand promise built to resonate with a CEO or Project Director — not a technical evaluator.</p>
+    </div>
+    <div class="del-item">
+      <div class="del-bar"></div>
+      <p class="del-name">03</p>
+      <p class="del-title">ICP + Messaging Architecture</p>
+      <p class="del-desc">Three-tier target account framework. Four persona-specific message maps — CEO, Project Director, Safety Officer, Technology Head.</p>
+    </div>
+    <div class="del-item">
+      <div class="del-bar"></div>
+      <p class="del-name">04</p>
+      <p class="del-title">Channel Strategy</p>
+      <p class="del-desc">Seven channels evaluated, prioritised, and given specific tactical instructions — including which ones to hold until Month 9 and why.</p>
+    </div>
+    <div class="del-item">
+      <div class="del-bar"></div>
+      <p class="del-name">05</p>
+      <p class="del-title">Commercial Architecture</p>
+      <p class="del-desc">Three-product model with entry deliverable, core platform license, and anchor partnership — with pricing guidance and pilot policy.</p>
+    </div>
+    <div class="del-item">
+      <div class="del-bar"></div>
+      <p class="del-name">The First Move</p>
+      <p class="del-title">Run iRAMA on one real highway corridor. Walk in with a report about their project.</p>
+      <p class="del-desc">That meeting — data in hand, not a pitch deck — is a conversation opener no competitor can replicate. This is what we always give our clients: the one thing to do first thing tomorrow morning.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  CTA CLOSE
+═══════════════════════════ -->
+<section class="cs-cta">
+  <p class="cta-label rv">Work with StartBox</p>
+  <h2 class="cta-h rv d1">You have the product.<br>We build the <span style="color:var(--gold)">engine.</span></h2>
+  <p class="cta-sub rv d2">No forms. No pitch decks unless you want one. Tell us what you are building and what is standing between you and your first real commercial win.</p>
+  <div class="cta-acts rv d3">
+    <a href="https://wa.me/919696439231?text=Hi%20StartBox%2C%20I%20came%20across%20the%20Adhyava%20case%20study%20and%20would%20like%20to%20discuss%20my%20project." class="btn-wa">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Message on WhatsApp
+    </a>
+    <a href="mailto:team@startboxmarketing.com" class="btn-em">Email us</a>
+  </div>
+</section>
+
+<!-- ═══════════════════════════
+  FOOTER
+═══════════════════════════ -->
+<footer>
+  <div class="ft-g">
+    <div>
+      <div class="ft-logo">Start<b>Box</b></div>
+      <p class="ft-desc">Strategy, technology, and growth for founders building businesses that outlast them.</p>
+      <div class="ft-dots">
+        <div class="fd" style="background:#C4992A"></div>
+        <div class="fd" style="background:#1A9A6E"></div>
+        <div class="fd" style="background:#C06050"></div>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Studios</h4><ul>
+      <li><a href="index.html#studios">The Strategist</a></li>
+      <li><a href="index.html#studios">The Builder</a></li>
+      <li><a href="index.html#studios">The Executor</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Strategy Lab</h4><ul>
+      <li><a href="strategy-lab.html">All Case Studies</a></li>
+      <li><a href="brand-diagnosis.html">Free Brand Diagnosis</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Connect</h4><ul>
+      <li><a href="https://wa.me/919696439231">WhatsApp · +91 96964 39231</a></li>
+      <li><a href="tel:+919696439231">+91 96964 39231</a></li>
+      <li><a href="mailto:team@startboxmarketing.com">team@startboxmarketing.com</a></li>
+      <li><a href="https://www.linkedin.com/company/startbox-ventures-marketing" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-note">© 2026 StartBox Ventures</p>
+    <p class="ft-note">Vapi, Gujarat · India</p>
+  </div>
+</footer>
+
+<!-- Fixed WA -->
+
+
+<script>
+/* scroll reveal — same logic as StartBox */
+const ioR = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (!e.isIntersecting) return;
+    e.target.classList.add('in');
+    ioR.unobserve(e.target);
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.rv').forEach(el => ioR.observe(el));
+</script>
+<div class="fabs">
+  <a href="https://www.linkedin.com/company/startbox-ventures-marketing" target="_blank" rel="noopener" class="fab fab-li" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a href="mailto:team@startboxmarketing.com" class="fab fab-mail" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></a>
+  <a href="https://wa.me/919696439231?text=Hi%20StartBox%2C%20I%20would%20like%20to%20discuss%20my%20project." class="fab fab-wa" aria-label="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+</div>
+</body>
+</html>

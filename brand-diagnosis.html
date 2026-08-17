@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Brand Diagnosis — StartBox Ventures</title>
+<meta name="description" content="Get a real brand diagnosis in 2 minutes. No email required. StartBox reads your brand and tells you exactly what is breaking your growth.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,300&display=swap" rel="stylesheet">
+<link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+:root{
+  --white:#FFFFFF;--off:#F7F5F0;--ink:#09090B;--ink2:rgba(9,9,11,.46);
+  --ink3:rgba(9,9,11,.1);--gold:#C4992A;--navy:#08152B;
+  --s:'Satoshi',system-ui,sans-serif;
+  --f:'Fraunces',Georgia,serif;
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+body{font-family:var(--s);background:#030508;color:#fff;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;background:rgba(8,8,8,.92);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,.05);}
+@media(max-width:680px){nav{padding:0 20px}}
+
+
+
+
+
+/* HERO */
+.diag-hero{padding:140px clamp(20px,5vw,56px) 80px;position:relative;overflow:hidden;border-bottom:1px solid rgba(255,255,255,.06);}
+@media(max-width:680px){.diag-hero{padding:120px 20px 60px}}
+.diag-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%, rgba(196,153,42,.04) 0%, transparent 60%);pointer-events:none;}
+.dh-eye{font-size:9px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:#C4992A;display:flex;align-items:center;gap:10px;margin-bottom:28px;}
+.dh-eye::before{content:'';width:14px;height:1px;background:#C4992A;}
+.dh-h{font-family:var(--s);font-size:clamp(36px,6vw,72px);font-weight:900;line-height:.95;letter-spacing:-.04em;color:#fff;margin-bottom:20px;}
+.dh-h .g{color:#C4992A}
+.dh-sub{font-size:15px;color:rgba(255,255,255,.38);line-height:1.75;max-width:520px;margin-bottom:40px;}
+.dh-proof{display:flex;gap:32px;flex-wrap:wrap;}
+.dh-proof-item{font-size:11px;color:rgba(255,255,255,.2);letter-spacing:.06em;text-transform:uppercase;display:flex;align-items:center;gap:8px;}
+.dh-proof-item::before{content:'✓';color:#C4992A;font-size:10px;}
+
+/* TOOL WRAPPER */
+.diag-tool-wrap{max-width:680px;margin:0 auto;padding:80px clamp(20px,5vw,56px);}
+@media(max-width:680px){.diag-tool-wrap{padding:56px 20px}}
+
+/* Override audit-section since we're not using it as a section */
+.audit-inner{max-width:100%;margin:0;}
+
+/* BOTTOM CTA */
+.diag-bottom{background:#0A0A0A;border-top:1px solid rgba(255,255,255,.06);padding:64px clamp(20px,5vw,56px);text-align:center;}
+@media(max-width:680px){.diag-bottom{padding:48px 20px}}
+.db-h{font-size:clamp(20px,3vw,32px);font-weight:900;letter-spacing:-.03em;color:#fff;margin-bottom:12px;}
+.db-sub{font-size:13px;color:rgba(255,255,255,.35);line-height:1.7;max-width:440px;margin:0 auto 32px;}
+.db-acts{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;}
+.db-wa{display:inline-flex;align-items:center;gap:8px;background:#25D366;color:#fff;font-family:var(--s);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:13px 24px;text-decoration:none;transition:opacity .2s;}
+.db-wa:hover{opacity:.88}
+.db-em{display:inline-flex;align-items:center;padding:13px 20px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.4);font-family:var(--s);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;transition:all .2s;}
+.db-em:hover{color:#fff;border-color:rgba(255,255,255,.3)}
+
+/* FOOTER */
+.diag-
+@media(max-width:680px){.diag-}
+.df-logo{font-family:var(--s);font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;}
+.df-logo b{color:#C4992A}
+.df-links{display:flex;gap:20px;}
+.df-links a{font-size:11px;color:rgba(255,255,255,.2);text-decoration:none;transition:color .2s;}
+.df-links a:hover{color:#C4992A}
+
+/* ── AUDIT TOOL ── */
+.audit-section{padding:100px clamp(20px,5vw,56px);background:#030508;border-bottom:1px solid rgba(255,255,255,.07);}
+.audit-inner{max-width:640px;margin:0 auto;}
+.audit-eyebrow{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C4992A;display:flex;align-items:center;gap:10px;margin-bottom:20px;}
+.audit-eyebrow::before{content:'';width:14px;height:1px;background:#C4992A;}
+.audit-h{font-size:clamp(24px,3.5vw,38px);font-weight:900;letter-spacing:-.03em;color:#fff;line-height:1.08;margin-bottom:12px;}
+.audit-h .g{color:#C4992A;}
+.audit-sub{font-size:13px;color:rgba(255,255,255,.38);line-height:1.7;margin-bottom:48px;max-width:440px;}
+.audit-mode{display:flex;border:1px solid rgba(255,255,255,.1);margin-bottom:48px;}
+.audit-mode-btn{flex:1;padding:13px 20px;background:transparent;border:none;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);cursor:pointer;transition:all .2s;}
+.audit-mode-btn.active{background:#C4992A;color:#030508;}
+.audit-field{border-top:1px solid rgba(255,255,255,.07);padding:26px 0;}
+.audit-field:last-of-type{border-bottom:1px solid rgba(255,255,255,.07);}
+.audit-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C4992A;margin-bottom:14px;display:flex;align-items:center;gap:8px;}
+.audit-label-num{font-style:italic;color:rgba(255,255,255,.18);font-weight:300;font-size:11px;}
+.audit-hint{font-size:11px;color:rgba(255,255,255,.25);margin-bottom:10px;line-height:1.5;}
+.audit-pills{display:flex;flex-wrap:wrap;gap:8px;}
+.audit-pill{font-size:12px;font-weight:600;letter-spacing:.03em;padding:8px 15px;border:1px solid rgba(255,255,255,.12);background:transparent;color:rgba(255,255,255,.45);cursor:pointer;transition:all .18s;font-family:inherit;}
+.audit-pill:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.8);}
+.audit-pill.active{background:#C4992A;border-color:#C4992A;color:#030508;}
+.audit-input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:12px 15px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color .18s;margin-bottom:8px;box-sizing:border-box;}
+.audit-input::placeholder{color:rgba(255,255,255,.2);}
+.audit-input:focus{border-color:rgba(196,153,42,.5);}
+.audit-textarea{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:12px 15px;font-family:inherit;font-size:13px;color:#fff;outline:none;transition:border-color .18s;resize:none;line-height:1.65;box-sizing:border-box;}
+.audit-textarea::placeholder{color:rgba(255,255,255,.2);}
+.audit-textarea:focus{border-color:rgba(196,153,42,.5);}
+.audit-select{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);padding:12px 15px;font-family:inherit;font-size:13px;color:rgba(255,255,255,.6);outline:none;cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' fill='none'%3E%3Cpath d='M1 1l5 5 5-5' stroke='rgba(255,255,255,.3)' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 15px center;}
+.audit-select:focus{border-color:rgba(196,153,42,.5);}
+.audit-select option{background:#1a1a1a;color:#fff;}
+.audit-panel{display:none;}
+.audit-panel.show{display:block;}
+.audit-btn{width:100%;padding:17px 32px;background:#C4992A;border:none;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#030508;cursor:pointer;transition:opacity .18s;margin-top:36px;display:flex;align-items:center;justify-content:center;gap:10px;}
+.audit-btn:hover{opacity:.88;}
+.audit-btn:disabled{opacity:.4;cursor:not-allowed;}
+.audit-error{font-size:12px;color:rgba(255,100,100,.7);margin-top:10px;display:none;}
+.audit-error.show{display:block;}
+.audit-loading{display:none;margin-top:44px;border-top:1px solid rgba(255,255,255,.07);padding-top:36px;}
+.audit-loading.show{display:block;}
+.audit-load-bar{width:100%;height:1px;background:rgba(255,255,255,.07);position:relative;overflow:hidden;margin-bottom:20px;}
+.audit-load-bar::after{content:'';position:absolute;top:0;left:-40%;width:40%;height:100%;background:#C4992A;animation:auditslide 1.2s ease infinite;}
+@keyframes auditslide{to{left:100%}}
+.audit-load-steps{display:flex;flex-direction:column;gap:9px;}
+.audit-step{font-size:12px;color:rgba(255,255,255,.2);display:flex;align-items:center;gap:10px;transition:color .3s;}
+.audit-step.active{color:rgba(255,255,255,.55);}
+.audit-step.done{color:#C4992A;}
+.audit-step::before{content:'○';font-size:8px;flex-shrink:0;}
+.audit-step.active::before{content:'◉';color:#C4992A;}
+.audit-step.done::before{content:'●';color:#C4992A;}
+.audit-result{display:none;margin-top:44px;border-top:1px solid rgba(255,255,255,.07);padding-top:44px;}
+.audit-result.show{display:block;}
+.audit-half-badge{display:inline-flex;align-items:center;gap:6px;font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:5px 10px;border:1px solid rgba(196,153,42,.2);color:rgba(196,153,42,.6);margin-bottom:24px;}
+.audit-result-hdr{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:36px;}
+.audit-result-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C4992A;margin-bottom:8px;display:flex;align-items:center;gap:8px;}
+.audit-result-label::before{content:'';width:12px;height:1px;background:#C4992A;}
+.audit-result-title{font-size:clamp(18px,3vw,26px);font-weight:900;letter-spacing:-.02em;color:#fff;line-height:1.1;}
+.audit-severity{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:6px 11px;border:1px solid rgba(196,153,42,.3);color:#C4992A;white-space:nowrap;flex-shrink:0;}
+.audit-diag-block{border-top:1px solid rgba(255,255,255,.07);padding:26px 0;}
+.audit-diag-block:last-child{border-bottom:1px solid rgba(255,255,255,.07);}
+.audit-diag-num{font-size:10px;color:rgba(255,255,255,.18);font-style:italic;font-weight:300;margin-bottom:8px;}
+.audit-diag-title{font-size:14px;font-weight:700;color:#fff;margin-bottom:9px;}
+.audit-diag-body{font-size:13px;color:rgba(255,255,255,.48);line-height:1.75;}
+.audit-diag-body strong{color:rgba(255,255,255,.8);font-weight:600;}
+.audit-prescription{margin-top:36px;background:rgba(196,153,42,.05);border:1px solid rgba(196,153,42,.14);padding:26px;}
+.audit-presc-label{font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#C4992A;margin-bottom:14px;}
+.audit-presc-body{font-size:13px;color:rgba(255,255,255,.52);line-height:1.75;}
+.audit-presc-body strong{color:#fff;font-weight:600;}
+.audit-ctas{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px;}
+.audit-cta-primary{flex:1;padding:13px 18px;background:#C4992A;border:none;font-family:inherit;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#030508;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;transition:opacity .18s;}
+.audit-cta-primary:hover{opacity:.85;}
+.audit-cta-secondary{padding:13px 18px;background:transparent;border:1px solid rgba(255,255,255,.12);font-family:inherit;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.4);cursor:pointer;display:inline-flex;align-items:center;gap:6px;transition:all .18s;}
+.audit-cta-secondary:hover{border-color:rgba(255,255,255,.3);color:rgba(255,255,255,.75);}
+@media(max-width:600px){.audit-section{padding:72px 20px;}.audit-result-hdr{flex-direction:column;}}
+
+
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;height:64px;display:flex;align-items:center;justify-content:space-between;padding:0 56px;transition:background .35s,border-color .35s;border-bottom:1px solid transparent;}
+nav.dark{background:rgba(8,8,8,.94);backdrop-filter:blur(24px);border-color:rgba(255,255,255,.05);}
+nav.light{background:#fff;border-color:rgba(9,9,11,.1);}
+@media(max-width:680px){nav{padding:0 20px;}}
+.n-logo{font-family:'Satoshi',system-ui,sans-serif;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;color:#fff;transition:color .2s;}
+nav.dark .n-logo{color:#fff;}
+nav.light .n-logo{color:#09090B;}
+.n-logo b{color:#C4992A;}
+.n-back{font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:rgba(255,255,255,.55);transition:color .2s;}
+nav.dark .n-back{color:rgba(255,255,255,.55);}
+nav.light .n-back{color:rgba(9,9,11,.46);}
+.n-back:hover{color:#C4992A;}
+
+/* ── FOOTER ── */
+footer{background:#030508;padding:56px clamp(20px,5vw,56px) 36px;border-top:1px solid rgba(255,255,255,.05);}
+.ft-g{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:40px;margin-bottom:48px;}
+.ft-logo{font-family:'Satoshi',system-ui,sans-serif;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#fff;margin-bottom:10px;}
+.ft-logo b{color:#C4992A;}
+.ft-desc{font-size:12px;color:rgba(255,255,255,.22);line-height:1.7;max-width:220px;margin-bottom:16px;}
+.ft-dots{display:flex;gap:6px;}
+.fd{width:6px;height:6px;border-radius:50%;}
+.ft-col h4{font-size:9px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.2);margin-bottom:14px;}
+.ft-col ul{list-style:none;}
+.ft-col li{margin-bottom:10px;}
+.ft-col a{font-size:12px;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.ft-col a:hover{color:#fff;}
+.ft-bot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px;padding-top:24px;border-top:1px solid rgba(255,255,255,.05);}
+.ft-note{font-size:9px;font-weight:500;letter-spacing:.06em;text-transform:uppercase;color:rgba(255,255,255,.14);}
+@media(max-width:760px){.ft-g{grid-template-columns:1fr 1fr;}}
+@media(max-width:480px){.ft-g{grid-template-columns:1fr;}footer{padding:44px 20px 28px;}}
+
+/* ── FIXED CONTACT FABS ── */
+.fabs{position:fixed;bottom:24px;right:24px;z-index:600;display:flex;flex-direction:column;align-items:center;gap:10px;}
+.fab{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;transition:transform .2s,box-shadow .2s;box-shadow:0 4px 16px rgba(0,0,0,.25);}
+.fab:hover{transform:scale(1.1);}
+.fab-wa{background:#25D366;box-shadow:0 4px 16px rgba(37,211,102,.35);}
+.fab-li{background:#0A66C2;box-shadow:0 4px 16px rgba(10,102,194,.35);}
+.fab-mail{background:#C4992A;box-shadow:0 4px 16px rgba(196,153,42,.35);}
+@media(max-width:480px){.fabs{bottom:16px;right:16px;gap:8px;}.fab{width:44px;height:44px;}}
+
+/* ── RESPONSIVE BASE ── */
+*,*::before,*::after{box-sizing:border-box;}
+html{font-size:16px;}
+img,video,svg{max-width:100%;height:auto;}
+@media(max-width:960px){
+  [class*="grid"]{grid-template-columns:repeat(2,1fr)!important;}
+}
+@media(max-width:600px){
+  [class*="grid"]{grid-template-columns:1fr!important;}
+  [style*="padding:100px clamp(20px,5vw,56px)"],[style*="padding:80px clamp(20px,5vw,56px)"]{padding:60px 20px!important;}
+}
+
+</style>
+</head>
+<body>
+
+<nav id="snav" class="dark">
+  <a href="index.html" class="n-logo">Start<b>Box</b></a>
+  <a href="index.html" class="n-back">← Back to site</a>
+</nav>
+
+<section class="diag-hero">
+  <div class="dh-eye">✦ Free Brand Diagnosis</div>
+  <h1 class="dh-h">Your brand has a<br><span class="g">diagnosis.</span><br>Most don't look.</h1>
+  <p class="dh-sub">This is not a quiz. Not a score. Not a template. Our strategy framework reads your brand presence and tells you exactly what is breaking your growth — and what to fix first. Two minutes. No email required.</p>
+  <div class="dh-proof">
+    <span class="dh-proof-item">Takes 2 minutes</span>
+    <span class="dh-proof-item">No email or signup</span>
+    <span class="dh-proof-item">Written by our strategy AI</span>
+    <span class="dh-proof-item">Full audit available on a call</span>
+  </div>
+</section>
+
+<div class="diag-tool-wrap">
+  <div class="audit-inner">
+
+    <div class="audit-mode">
+      <button class="audit-mode-btn active" id="mode-links-btn" onclick="auditSwitchMode('links')">Share Your Links</button>
+      <button class="audit-mode-btn" id="mode-paste-btn" onclick="auditSwitchMode('paste')">Paste Your Content</button>
+    </div>
+
+    <!-- Panel A: Links -->
+    <div class="audit-panel show" id="audit-panel-links">
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">01 /</span> What kind of business?</div>
+        <div class="audit-pills" id="type-pills-links">
+          <button class="audit-pill" data-val="coach">Coach or Expert</button>
+          <button class="audit-pill" data-val="d2c">D2C Brand</button>
+          <button class="audit-pill" data-val="b2b">B2B / SaaS</button>
+          <button class="audit-pill" data-val="startup">Startup</button>
+          <button class="audit-pill" data-val="service">Service Business</button>
+        </div>
+      </div>
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">02 /</span> Where are you right now?</div>
+        <select class="audit-select" id="revenue-links">
+          <option value="" disabled selected>Select your current stage</option>
+          <option value="pre">Pre-revenue — still building</option>
+          <option value="early">Early revenue — ₹0 to ₹2L/month</option>
+          <option value="growing">Growing — ₹2L to ₹10L/month</option>
+          <option value="scaling">Scaling — ₹10L to ₹50L/month</option>
+          <option value="established">Established — ₹50L+/month</option>
+        </select>
+      </div>
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">03 /</span> Share your links</div>
+        <div class="audit-hint">Share at least one. More links = sharper diagnosis.</div>
+        <input type="url" class="audit-input" id="link-website" placeholder="Website URL">
+        <input type="text" class="audit-input" id="link-instagram" placeholder="Instagram handle (e.g. @yourbrand)">
+        <input type="url" class="audit-input" id="link-linkedin" placeholder="LinkedIn URL" style="margin-bottom:0">
+      </div>
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">04 /</span> What do you want more of?</div>
+        <div class="audit-pills" id="goal-pills-links">
+          <button class="audit-pill" data-val="clients">More clients</button>
+          <button class="audit-pill" data-val="sales">More sales</button>
+          <button class="audit-pill" data-val="visibility">More visibility</button>
+          <button class="audit-pill" data-val="trust">More trust</button>
+          <button class="audit-pill" data-val="retention">Better retention</button>
+        </div>
+      </div>
+      <button class="audit-btn" id="audit-btn-links" onclick="runAudit('links')">✦ &nbsp;Pull My Brand Diagnosis</button>
+      <div class="audit-error" id="audit-err-links">Please complete all fields before running the diagnosis.</div>
+    </div>
+
+    <!-- Panel B: Paste -->
+    <div class="audit-panel" id="audit-panel-paste">
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">01 /</span> What kind of business?</div>
+        <div class="audit-pills" id="type-pills-paste">
+          <button class="audit-pill" data-val="coach">Coach or Expert</button>
+          <button class="audit-pill" data-val="d2c">D2C Brand</button>
+          <button class="audit-pill" data-val="b2b">B2B / SaaS</button>
+          <button class="audit-pill" data-val="startup">Startup</button>
+          <button class="audit-pill" data-val="service">Service Business</button>
+        </div>
+      </div>
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">02 /</span> Where are you right now?</div>
+        <select class="audit-select" id="revenue-paste">
+          <option value="" disabled selected>Select your current stage</option>
+          <option value="pre">Pre-revenue — still building</option>
+          <option value="early">Early revenue — ₹0 to ₹2L/month</option>
+          <option value="growing">Growing — ₹2L to ₹10L/month</option>
+          <option value="scaling">Scaling — ₹10L to ₹50L/month</option>
+          <option value="established">Established — ₹50L+/month</option>
+        </select>
+      </div>
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">03 /</span> Paste your bio or about section</div>
+        <div class="audit-hint">Instagram bio, LinkedIn about, homepage copy — whatever describes you publicly.</div>
+        <textarea class="audit-textarea" id="paste-bio" rows="4" placeholder="Paste your bio or about section here..."></textarea>
+      </div>
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">04 /</span> Paste your 3 most recent posts</div>
+        <div class="audit-hint">Captions, LinkedIn posts, anything recent. Separate with a blank line.</div>
+        <textarea class="audit-textarea" id="paste-content" rows="6" placeholder="Post 1: ...&#10;&#10;Post 2: ...&#10;&#10;Post 3: ..."></textarea>
+      </div>
+      <div class="audit-field">
+        <div class="audit-label"><span class="audit-label-num">05 /</span> What do you want more of?</div>
+        <div class="audit-pills" id="goal-pills-paste">
+          <button class="audit-pill" data-val="clients">More clients</button>
+          <button class="audit-pill" data-val="sales">More sales</button>
+          <button class="audit-pill" data-val="visibility">More visibility</button>
+          <button class="audit-pill" data-val="trust">More trust</button>
+          <button class="audit-pill" data-val="retention">Better retention</button>
+        </div>
+      </div>
+      <button class="audit-btn" id="audit-btn-paste" onclick="runAudit('paste')">✦ &nbsp;Read My Brand & Diagnose</button>
+      <div class="audit-error" id="audit-err-paste">Please complete all fields before running the diagnosis.</div>
+    </div>
+
+    <!-- Loading -->
+    <div class="audit-loading" id="audit-loading">
+      <div class="audit-load-bar"></div>
+      <div class="audit-load-steps">
+        <div class="audit-step" id="astep-1">Reading your brand presence</div>
+        <div class="audit-step" id="astep-2">Identifying positioning gaps</div>
+        <div class="audit-step" id="astep-3">Cross-referencing growth patterns</div>
+        <div class="audit-step" id="astep-4">Writing your diagnosis</div>
+      </div>
+    </div>
+
+    <!-- Result -->
+    <div class="audit-result" id="audit-result">
+      <div class="audit-half-badge">✦ Half Audit — Full audit available on call</div>
+      <div class="audit-result-hdr">
+        <div>
+          <div class="audit-result-label">✦ Brand Diagnosis</div>
+          <div class="audit-result-title" id="audit-res-title"></div>
+        </div>
+        <div class="audit-severity" id="audit-res-severity"></div>
+      </div>
+      <div id="audit-res-points"></div>
+      <div class="audit-prescription" id="audit-res-prescription"></div>
+      <div class="audit-ctas">
+        <a id="audit-wa-link" href="#" target="_blank" class="audit-cta-primary">Get the Full Audit →</a>
+        <button class="audit-cta-secondary" onclick="resetAudit()">↺ New Diagnosis</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<section class="diag-bottom">
+  <h2 class="db-h">Want a human to read it with you?</h2>
+  <p class="db-sub">The full audit happens on a call. We go deeper, look at things the tool cannot access, and give you a single decisive first move — with us or without us.</p>
+  <div class="db-acts">
+    <a href="https://wa.me/919696439231?text=Hi%20StartBox%2C%20I%20just%20ran%20the%20brand%20diagnosis%20and%20want%20to%20discuss%20the%20full%20audit." class="db-wa">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+      Book the full audit
+    </a>
+    <a href="mailto:team@startboxmarketing.com" class="db-em">Email us</a>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-g">
+    <div>
+      <div class="ft-logo">Start<b>Box</b></div>
+      <p class="ft-desc">Strategy, technology, and growth for founders building businesses that outlast them.</p>
+      <div class="ft-dots">
+        <div class="fd" style="background:#C4992A"></div>
+        <div class="fd" style="background:#1A9A6E"></div>
+        <div class="fd" style="background:#C06050"></div>
+      </div>
+    </div>
+    <div class="ft-col"><h4>Studios</h4><ul>
+      <li><a href="index.html#studios">The Strategist</a></li>
+      <li><a href="index.html#studios">The Builder</a></li>
+      <li><a href="index.html#studios">The Executor</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Strategy Lab</h4><ul>
+      <li><a href="strategy-lab.html">All Case Studies</a></li>
+      <li><a href="brand-diagnosis.html">Free Brand Diagnosis</a></li>
+    </ul></div>
+    <div class="ft-col"><h4>Connect</h4><ul>
+      <li><a href="https://wa.me/919696439231">WhatsApp · +91 96964 39231</a></li>
+      <li><a href="tel:+919696439231">+91 96964 39231</a></li>
+      <li><a href="mailto:team@startboxmarketing.com">team@startboxmarketing.com</a></li>
+      <li><a href="https://www.linkedin.com/company/startbox-ventures-marketing" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul></div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-note">© 2026 StartBox Ventures</p>
+    <p class="ft-note">Vapi, Gujarat · India</p>
+  </div>
+</footer>
+
+<script>
+/* ── BRAND DIAGNOSIS TOOL ── */
+
+const auditTypeLabels = {coach:'Coach or Expert',d2c:'D2C Brand',b2b:'B2B / SaaS Business',startup:'Early-Stage Startup',service:'Service Business'};
+const auditRevenueLabels = {pre:'Pre-revenue (still building)',early:'Early revenue (₹0–₹2L/month)',growing:'Growing (₹2L–₹10L/month)',scaling:'Scaling (₹10L–₹50L/month)',established:'Established (₹50L+/month)'};
+const auditGoalLabels = {clients:'more clients',sales:'more sales',visibility:'more visibility and reach',trust:'more trust and credibility',retention:'better customer retention'};
+
+document.querySelectorAll('.audit-pills').forEach(group => {
+  group.querySelectorAll('.audit-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      group.querySelectorAll('.audit-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+    });
+  });
+});
+
+function auditGetPill(groupId) {
+  const a = document.querySelector('#' + groupId + ' .audit-pill.active');
+  return a ? a.dataset.val : null;
+}
+
+function auditSwitchMode(mode) {
+  document.getElementById('audit-panel-links').classList.toggle('show', mode === 'links');
+  document.getElementById('audit-panel-paste').classList.toggle('show', mode === 'paste');
+  document.getElementById('mode-links-btn').classList.toggle('active', mode === 'links');
+  document.getElementById('mode-paste-btn').classList.toggle('active', mode === 'paste');
+  document.getElementById('audit-result').classList.remove('show');
+  document.getElementById('audit-loading').classList.remove('show');
+}
+
+function auditAnimateSteps() {
+  [1,2,3,4].forEach((n, i) => {
+    setTimeout(() => {
+      if (i > 0) document.getElementById('astep-' + i).className = 'audit-step done';
+      document.getElementById('astep-' + n).className = 'audit-step active';
+    }, i * 900);
+  });
+}
+
+async function runAudit(mode) {
+  const type = auditGetPill('type-pills-' + mode);
+  const revenue = document.getElementById('revenue-' + mode).value;
+  const goal = auditGetPill('goal-pills-' + mode);
+  const errEl = document.getElementById('audit-err-' + mode);
+  let contextBlock = '';
+
+  if (mode === 'links') {
+    const website = document.getElementById('link-website').value.trim();
+    const instagram = document.getElementById('link-instagram').value.trim();
+    const linkedin = document.getElementById('link-linkedin').value.trim();
+    if (!type || !revenue || !goal || (!website && !instagram && !linkedin)) {
+      errEl.classList.add('show'); return;
+    }
+    errEl.classList.remove('show');
+    contextBlock = `The founder has shared these public links:\n${website ? 'Website: ' + website + '\n' : ''}${instagram ? 'Instagram: ' + instagram + '\n' : ''}${linkedin ? 'LinkedIn: ' + linkedin : ''}\n\nPerform a half-audit of their visible brand presence. Analyse positioning clarity, message consistency, visual identity, and CTA strength. If you cannot access a link, base diagnosis on what typical brands at this stage look like.`;
+  } else {
+    const bio = document.getElementById('paste-bio').value.trim();
+    const pastecontent = document.getElementById('paste-content').value.trim();
+    if (!type || !revenue || !goal || !bio || !pastecontent) {
+      errEl.classList.add('show'); return;
+    }
+    errEl.classList.remove('show');
+    contextBlock = `The founder has shared this content:\n\nBIO:\n"${bio}"\n\nRECENT POSTS:\n"${pastecontent}"\n\nAnalyse: positioning clarity, tone consistency, whether the message matches someone who wants ${auditGoalLabels[goal]}, what is missing, and what is working. Reference actual phrases you see.`;
+  }
+
+  document.getElementById('audit-btn-' + mode).disabled = true;
+  document.getElementById('audit-loading').classList.add('show');
+  document.getElementById('audit-result').classList.remove('show');
+  auditAnimateSteps();
+
+  const prompt = `You are Ashmita Mishra, founder of StartBox Ventures — a brand strategy firm that diagnoses before it prescribes. You are sharp, direct, and genuinely helpful. You do not give generic advice.
+
+A founder submitted a brand diagnosis:
+
+Business Type: ${auditTypeLabels[type] || type}
+Revenue Stage: ${auditRevenueLabels[revenue] || revenue}
+What they want: ${auditGoalLabels[goal] || goal}
+
+${contextBlock}
+
+Write a StartBox half-audit. The full audit happens on a call. Make the diagnosis sharp enough they feel seen and want that conversation.
+
+Respond ONLY in this JSON format, no markdown, no backticks:
+
+{
+  "title": "4-8 word diagnosis title (e.g. 'Presence Without Positioning')",
+  "severity": "Critical Gap | Positioning Risk | Growth Ready | Strong Foundation",
+  "points": [
+    {"num": "01", "title": "Finding title", "body": "2-3 specific sentences referencing what you read."},
+    {"num": "02", "title": "Finding title", "body": "2-3 sentences going deeper — the real reason behind point 01."},
+    {"num": "03", "title": "What the Full Audit Would Reveal", "body": "2-3 sentences on what partial info hides. Make them curious, not manipulated."}
+  ],
+  "prescription": "2-3 sentences. Single decisive first move. End with what becomes possible once fixed."
+}`;
+
+  try {
+    const response = await fetch('/api/brand-diagnosis', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prompt })
+    });
+
+    if (!response.ok) throw new Error('Request failed');
+
+    const data = await response.json();
+    const raw = data.content[0].text.replace(/```json|```/g, '').trim();
+    const diagnosis = JSON.parse(raw);
+
+    setTimeout(() => {
+      document.getElementById('astep-4').className = 'audit-step done';
+      document.getElementById('audit-loading').classList.remove('show');
+      renderAuditResult(diagnosis, type);
+      document.getElementById('audit-btn-' + mode).disabled = false;
+    }, 3800);
+
+  } catch(err) {
+    document.getElementById('audit-loading').classList.remove('show');
+    errEl.textContent = 'Something went wrong. Please try again.';
+    errEl.classList.add('show');
+    document.getElementById('audit-btn-' + mode).disabled = false;
+  }
+}
+
+function renderAuditResult(d, type) {
+  document.getElementById('audit-res-title').textContent = d.title;
+  document.getElementById('audit-res-severity').textContent = d.severity;
+  document.getElementById('audit-res-points').innerHTML = d.points.map(p =>
+    `<div class="audit-diag-block">
+      <div class="audit-diag-num">${p.num} / 03</div>
+      <div class="audit-diag-title">${p.title}</div>
+      <div class="audit-diag-body">${p.body.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>
+    </div>`
+  ).join('');
+  document.getElementById('audit-res-prescription').innerHTML =
+    `<div class="audit-presc-label">✦ First Move</div>
+     <div class="audit-presc-body">${d.prescription.replace(/\*\*(.*?)\*\*/g,'<strong>$1</strong>')}</div>`;
+  const waMsg = encodeURIComponent(`Hi StartBox, I just ran the brand diagnosis and got "${d.title}". I would like to get the full audit.`);
+  document.getElementById('audit-wa-link').href = `https://wa.me/919696439231?text=${waMsg}`;
+  document.getElementById('audit-result').classList.add('show');
+  document.getElementById('audit-result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function resetAudit() {
+  document.getElementById('audit-result').classList.remove('show');
+  document.getElementById('audit-loading').classList.remove('show');
+  [1,2,3,4].forEach(n => document.getElementById('astep-' + n).className = 'audit-step');
+  document.querySelectorAll('.audit-pill').forEach(p => p.classList.remove('active'));
+  ['revenue-links','revenue-paste'].forEach(id => document.getElementById(id).value = '');
+  ['link-website','link-instagram','link-linkedin'].forEach(id => document.getElementById(id).value = '');
+  ['paste-bio','paste-content'].forEach(id => document.getElementById(id).value = '');
+  window.scrollTo({ top: document.getElementById('diagnosis').offsetTop - 80, behavior: 'smooth' });
+}
+
+</script>
+<div class="fabs">
+  <a href="https://www.linkedin.com/company/startbox-ventures-marketing" target="_blank" rel="noopener" class="fab fab-li" aria-label="LinkedIn"><svg width="20" height="20" viewBox="0 0 24 24" fill="white"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+  <a href="mailto:team@startboxmarketing.com" class="fab fab-mail" aria-label="Email"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg></a>
+  <a href="https://wa.me/919696439231?text=Hi%20StartBox%2C%20I%20would%20like%20to%20discuss%20my%20project." class="fab fab-wa" aria-label="WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg></a>
+</div>
+</body>
+</html>
