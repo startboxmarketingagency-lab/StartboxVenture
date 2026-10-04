@@ -9,8 +9,8 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 2. Never publish StartBox revenue figures, and never publish anything that reveals the founder's age.
 3. Never invent proof: no made-up results, testimonials, client names or numbers. Missing proof stays out until there is a real line ("needed X, we did Y, result Z").
 4. Clients are described by sector and country only. No client names and no brand-like pseudonyms (the old OrbitX/Velora style pages are retired and redirect to `/work`).
-5. Brand names shown: Meesho, Feesto and AKQA, only under "Brands our team has contributed to, with partner agencies", never as "Our clients". Siemens and Rob Dial (consent given) appear in exactly one place, a single low-key line on `/work`; do not repeat or highlight them elsewhere. Shopsy, Pentagram and Clay are not shown.
-6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 8+ countries. Do not use "100% referral" as a stat. Founder's 640+ projects belong in her bio only.
+5. Brand names shown: only Meesho, Feesto and AKQA, under "Brands our team has contributed to, with partner agencies", never as "Our clients". All other past brands (including Siemens and Rob Dial) stay private and are not shown anywhere.
+6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 8+ countries. Do not use "100% referral" as a stat, and do not claim StartBox has never run ads. Say work has come through referrals and direct outreach. Founder's 640+ projects belong in her bio only.
 7. Titles: Ashmita Mishra, Founder & CEO; Shivani Tripathi, Chief Technology Officer. Never "Partner", "Director" or "Managing".
 8. The Strategist / Builder / Executor labels are internal only. Services use plain names.
 9. Retired, never use: "Strategy · Technology · Growth".
@@ -38,4 +38,4 @@ Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.st
 
 ## Adding pages
 
-Every new page needs a unique `<title>` and meta description, a canonical link, Open Graph tags, JSON-LD (Organization plus the page type), a breadcrumb, and an entry in `sitemap.xml`. Insights articles live in `insights/<slug>.html` and link to at least one service page and the audit. Articles about current events must cite verifiable sources in a Sources list and must not state a figure that is not in those sources.
+Every new page needs a unique `<title>` and meta description, a canonical link, Open Graph tags, JSON-LD (Organization plus the page type), a breadcrumb, and an entry in `sitemap.xml`. Insights articles live in `insights/<slug>.html` and link to at least one service page and the audit. Articles about current events must cite verifiable sources in a Sources list and must not state a figure that is not in those sources. Only cover events that concern our sector and knowledge (marketing, branding, digital, AI for business, consumer and D2C brands, search and social platforms); skip unrelated news such as stock-market or general tech deals.
