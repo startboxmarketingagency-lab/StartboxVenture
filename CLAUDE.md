@@ -1,15 +1,16 @@
 # StartBox Ventures website: rules
 
-Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain HTML sharing `assets/css/site.css` and `assets/js/site.js`. `api/brand-diagnosis.js` is the only server code.
+Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain HTML sharing `assets/css/site.css` and `assets/js/site.js`. There is no server code and no paid API: the AI Brand Diagnosis tool was removed for cost and `/brand-diagnosis` redirects to `/business-audit`. Do not add paid API features without approval.
 
 ## Non-negotiable content rules
 
 1. **Company location is India.** Every page, schema block, footer and meta tag must give the location as India (schema may add `addressRegion: Gujarat`). Never show a city (no "Vapi") and never imply the company is based anywhere else.
+   - India is the company's base, not its market limit. Do not put "India" in page titles, H1s, service names or article titles as a keyword (no "Branding services in India"). Say "based in India, working with businesses in 8+ countries"; schema `areaServed` is `Worldwide`.
 2. Never publish StartBox revenue figures, and never publish anything that reveals the founder's age.
 3. Never invent proof: no made-up results, testimonials, client names or numbers. Missing proof stays out until there is a real line ("needed X, we did Y, result Z").
 4. Clients are described by sector and country only. No client names and no brand-like pseudonyms (the old OrbitX/Velora style pages are retired and redirect to `/work`).
-5. Past brands (Meesho, Siemens, Shopsy, Pentagram, AKQA, Clay, Rob Dial, Feesto) appear only under "Brands our team has contributed to, with partner agencies", never as "Our clients".
-6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 100% of clients through referral. Founder's 640+ projects belong in her bio only.
+5. Brand names shown: Meesho, Feesto and AKQA, only under "Brands our team has contributed to, with partner agencies", never as "Our clients". Siemens and Rob Dial (consent given) appear in exactly one place, a single low-key line on `/work`; do not repeat or highlight them elsewhere. Shopsy, Pentagram and Clay are not shown.
+6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 8+ countries. Do not use "100% referral" as a stat. Founder's 640+ projects belong in her bio only.
 7. Titles: Ashmita Mishra, Founder & CEO; Shivani Tripathi, Chief Technology Officer. Never "Partner", "Director" or "Managing".
 8. The Strategist / Builder / Executor labels are internal only. Services use plain names.
 9. Retired, never use: "Strategy · Technology · Growth".
@@ -25,7 +26,7 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 
 ## Prices (client-facing)
 
-Discovery call + one-page summary free · Business audit ₹8,000 (48 h, adjusted in first month of a monthly plan) · One-time projects from ₹35,000 to ₹5,00,000+ · Monthly plans from ₹35,000/month · StartBox for MSME from ₹15,000.
+Discovery call + one-page summary free · Business audit ₹8,000 (48 h, adjusted in first month of a monthly plan) · One-time projects from ₹35,000 to ₹5,00,000+ · Monthly plans (retainers) from ₹35,000 up to ₹2,00,000+/month · StartBox for MSME is priced separately, from ₹15,000, and lives on `/msme`.
 
 ## Contact
 
@@ -37,4 +38,4 @@ Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.st
 
 ## Adding pages
 
-Every new page needs a unique `<title>` and meta description, a canonical link, Open Graph tags, JSON-LD (Organization plus the page type), a breadcrumb, and an entry in `sitemap.xml`. Insights articles live in `insights/<slug>.html` and link to at least one service page and the audit.
+Every new page needs a unique `<title>` and meta description, a canonical link, Open Graph tags, JSON-LD (Organization plus the page type), a breadcrumb, and an entry in `sitemap.xml`. Insights articles live in `insights/<slug>.html` and link to at least one service page and the audit. Articles about current events must cite verifiable sources in a Sources list and must not state a figure that is not in those sources.

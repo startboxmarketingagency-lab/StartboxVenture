@@ -426,3 +426,7 @@ h3 { font-size: clamp(20px, 2vw, 24px); }
   .reveal-words .w > span { transform: none; }
   .marquee-track { animation: none; flex-wrap: wrap; width: auto; }
     }
+
+/* Article sources */
+.prose .sources { font-size: 15px; line-height: 1.6; color: var(--warm); }
+.prose .sources a { color: var(--warm); word-break: break-word; }

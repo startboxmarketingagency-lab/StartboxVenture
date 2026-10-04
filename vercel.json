@@ -2,23 +2,67 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
-    { "source": "/strategy-lab", "destination": "/work", "permanent": true },
-    { "source": "/cs-:slug", "destination": "/work", "permanent": true },
-    { "source": "/StartBox_Adhyava_CaseStudy", "destination": "/work", "permanent": true },
-    { "source": "/hero-reel.mp4", "destination": "/", "permanent": true },
-    { "source": "/index", "destination": "/", "permanent": true }
+    {
+      "source": "/strategy-lab",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/cs-:slug",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/StartBox_Adhyava_CaseStudy",
+      "destination": "/work",
+      "permanent": true
+    },
+    {
+      "source": "/hero-reel.mp4",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/index",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/brand-diagnosis",
+      "destination": "/business-audit",
+      "permanent": true
+    },
+    {
+      "source": "/insights/google-business-profile-checklist-india",
+      "destination": "/insights/google-business-profile-checklist",
+      "permanent": true
+    }
   ],
   "headers": [
     {
       "source": "/assets/(.*)",
-      "headers": [{ "key": "Cache-Control", "value": "public, max-age=604800" }]
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=604800"
+        }
+      ]
     },
     {
       "source": "/(.*)",
       "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "X-Frame-Options", "value": "SAMEORIGIN" }
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
       ]
     }
   ]
