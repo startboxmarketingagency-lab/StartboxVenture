@@ -39,3 +39,10 @@ Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.st
 ## Adding pages
 
 Every new page needs a unique `<title>` and meta description, a canonical link, Open Graph tags, JSON-LD (Organization plus the page type), a breadcrumb, and an entry in `sitemap.xml`. Insights articles live in `insights/<slug>.html` and link to at least one service page and the audit. Articles about current events must cite verifiable sources in a Sources list and must not state a figure that is not in those sources. Only cover events that concern our sector and knowledge (marketing, branding, digital, AI for business, consumer and D2C brands, search and social platforms); skip unrelated news such as stock-market or general tech deals.
+
+## Motion system
+
+- Libraries are self-hosted in `assets/vendor/`: GSAP 3.15 (with ScrollTrigger, SplitText, Flip; free for commercial use since April 2025) and Lenis 1.3 for smooth scrolling. Do not load them from third-party CDNs.
+- `assets/js/site.js` adds `.motion` to `<html>` only when the libraries load and the visitor has not asked for reduced motion. Every hidden-before-animate style must be scoped under `.motion` so the page is readable without JavaScript.
+- Signature moments: first-visit preloader that draws the open box and drops the gold square (once per session), masked line reveals on headings, the pinned horizontal "Sound familiar?" section, the sticky process counter, scroll-reactive marquee, service rows that fill on hover, magnetic buttons, gold-square cursor on fine pointers, cross-page View Transitions.
+- One owner per property: an element is animated either by a GSAP tween or by the `[data-reveal]` CSS transition, never both.
