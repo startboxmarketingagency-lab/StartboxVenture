@@ -10,7 +10,7 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 2. Never publish StartBox revenue figures, and never publish anything that reveals the founder's age.
 3. Never invent proof: no made-up results, testimonials, client names or numbers. Missing proof stays out until there is a real line ("needed X, we did Y, result Z").
 4. Clients are described by sector and country only. No client names and no brand-like pseudonyms (the old OrbitX/Velora style pages are retired and redirect to `/work`).
-5. Brand names shown: only Meesho, Feesto and AKQA, under "Brands our team has contributed to, with partner agencies", never as "Our clients". All other past brands (including Siemens and Rob Dial) stay private and are not shown anywhere.
+5. Brand names shown: only Meesho, Feesto and AKQA, under "Brands our team has contributed to, with partner agencies", never as "Our clients". All other past brands (including Siemens and Rob Dial) stay private and are not shown anywhere, with one exception: the hidden business-card page `/meet` may also show Siemens and Rob Dial (founder decision, October 2026), under the same "with partner agencies" wording.
 6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 10+ countries (founder-approved October 2026). Work page: three client cases plus ten strategy studies, one per client country, each labelled "Strategy study" and ending with "If we were hired"; studies are never presented as client results. Do not use "100% referral" as a stat, and do not claim StartBox has never run ads. Say work has come through referrals and direct outreach. Founder's 640+ projects belong in her bio only.
 7. Titles (founder-confirmed October 2026): Ashmita Mishra, "Founder, CEO & Chief Strategy Officer"; Shivani Tripathi, "COO & Chief Technology Officer". Spell out Chief Strategy Officer on the page (CSO alone is ambiguous); schema `jobTitle` uses the full forms; short forms (CEO & CSO, COO & CTO) only where space is tight, such as meta descriptions. Never "Partner", "Director" or "Managing".
 8. The Strategist / Builder / Executor labels are internal only. Services use plain names.
@@ -37,6 +37,14 @@ WhatsApp/phone +91 96964 39231 · team@startboxmarketing.com · LinkedIn: linked
 ## Domain
 
 Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.startboxmarketing.com`. When startboxventures.com goes live, replace the domain everywhere in one pass and keep the old domain redirecting.
+
+## Business-card page
+
+`/meet` is the landing page behind the QR code on visiting cards. It is never linked from any page, is left out of `sitemap.xml` and `llms.txt`, and is `noindex` (meta tag plus `X-Robots-Tag` in `vercel.json`). It has its own minimal header and footer (`hidden=True` in the generator) and offers `assets/startbox-ventures.vcf` so visitors can save the contact. Its URL is printed on cards, so never rename or remove it; if the domain changes, the old domain must keep redirecting `/meet`.
+
+## Contact buttons
+
+Every page has two fixed buttons at the bottom right: Email (`mailto:`) directly above WhatsApp.
 
 ## Adding pages
 

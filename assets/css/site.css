@@ -817,3 +817,21 @@ p { line-height: 1.7; }
 /* Static header: fixed in place, never hides, and stays still during page transitions */
 .site-header, .site-header.is-hidden { transform: none; transition: background .3s; view-transition-name: site-header; }
 ::view-transition-group(site-header), ::view-transition-old(site-header), ::view-transition-new(site-header) { animation: none; }
+
+/* Contact buttons: email sits right above WhatsApp, bottom right, on every page */
+.fab-mail { bottom: 78px; }
+
+/* Business-card landing page (/meet) */
+.meet-actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.meet-actions .btn svg { width: 18px; height: 18px; }
+.site-header .meet-site { min-height: 44px; padding: 10px 18px; font-size: 15px; }
+.meet-names span { font-size: clamp(30px, 4.4vw, 64px); }
+.caps { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: var(--s3); }
+.cap { position: relative; padding: clamp(28px, 3vw, 44px); border: 1px solid var(--glass-line, var(--line)); background: var(--glass, var(--charcoal)); -webkit-backdrop-filter: blur(16px) saturate(140%); backdrop-filter: blur(16px) saturate(140%); }
+.cap-n { display: block; font-size: 12px; font-weight: 500; letter-spacing: .16em; color: var(--gold); margin-bottom: 20px; }
+.cap h3 { font-size: clamp(22px, 2vw, 28px); margin: 0 0 20px; }
+.cap ul { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.cap li { font-size: 14px; padding: 8px 12px; border: 1px solid var(--line); color: var(--ivory); }
+.meet-footer { padding: 32px 0; }
+@media (max-width: 520px) { .site-header .meet-site { padding: 8px 12px; font-size: 14px; } .meet-actions .btn { flex: 1 1 calc(50% - 6px); justify-content: center; } }
+@media (min-width: 1100px) { .caps { grid-template-columns: repeat(6, minmax(0, 1fr)); } .caps .cap { grid-column: span 2; } .caps .cap:nth-child(n+4) { grid-column: span 3; } }

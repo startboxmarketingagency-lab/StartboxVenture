@@ -40,6 +40,28 @@
   ],
   "headers": [
     {
+      "source": "/meet",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/assets/startbox-ventures.vcf",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/vcard; charset=utf-8"
+        },
+        {
+          "key": "Content-Disposition",
+          "value": "attachment; filename=\"StartBox-Ventures.vcf\""
+        }
+      ]
+    },
+    {
       "source": "/assets/(.*)",
       "headers": [
         {
