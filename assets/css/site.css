@@ -813,3 +813,7 @@ p { line-height: 1.7; }
 .light .brief .hired-k { color: var(--gold-deep, #9C7A1E); }
 .light .brief .hired ol { color: var(--black); }
 .reach.one { grid-template-columns: 1fr; }
+
+/* Static header: fixed in place, never hides, and stays still during page transitions */
+.site-header, .site-header.is-hidden { transform: none; transition: background .3s; view-transition-name: site-header; }
+::view-transition-group(site-header), ::view-transition-old(site-header), ::view-transition-new(site-header) { animation: none; }

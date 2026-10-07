@@ -125,15 +125,11 @@
       });
     }
 
-    /* Header: hide on scroll down, show on scroll up; progress bar */
-    var header = document.querySelector('.site-header');
+    /* Progress bar (the header stays fixed and never moves) */
     var bar = document.querySelector('.progress');
-    var lastY = 0;
     var onScroll = function () {
       var y = window.scrollY, h = doc.scrollHeight - window.innerHeight;
       if (bar) bar.style.transform = 'scaleX(' + (h > 0 ? Math.min(1, y / h) : 0) + ')';
-      if (header && !(nav && nav.classList.contains('open'))) header.classList.toggle('is-hidden', y > 240 && y > lastY);
-      lastY = y;
     };
     if (lenis) lenis.on('scroll', onScroll); else window.addEventListener('scroll', onScroll, { passive: true });
 

@@ -12,7 +12,7 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 4. Clients are described by sector and country only. No client names and no brand-like pseudonyms (the old OrbitX/Velora style pages are retired and redirect to `/work`).
 5. Brand names shown: only Meesho, Feesto and AKQA, under "Brands our team has contributed to, with partner agencies", never as "Our clients". All other past brands (including Siemens and Rob Dial) stay private and are not shown anywhere.
 6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 10+ countries (founder-approved October 2026). Work page: three client cases plus ten strategy studies, one per client country, each labelled "Strategy study" and ending with "If we were hired"; studies are never presented as client results. Do not use "100% referral" as a stat, and do not claim StartBox has never run ads. Say work has come through referrals and direct outreach. Founder's 640+ projects belong in her bio only.
-7. Titles: Ashmita Mishra, Founder & CEO; Shivani Tripathi, Chief Technology Officer. Never "Partner", "Director" or "Managing".
+7. Titles (founder-confirmed October 2026): Ashmita Mishra, "Founder, CEO & Chief Strategy Officer"; Shivani Tripathi, "COO & Chief Technology Officer". Spell out Chief Strategy Officer on the page (CSO alone is ambiguous); schema `jobTitle` uses the full forms; short forms (CEO & CSO, COO & CTO) only where space is tight, such as meta descriptions. Never "Partner", "Director" or "Managing".
 8. The Strategist / Builder / Executor labels are internal only. Services use plain names.
 9. Retired, never use: "Strategy · Technology · Growth".
 10. Everything public is approved by Ashmita or Shivani before it goes out.
@@ -47,6 +47,7 @@ Every new page needs a unique `<title>` and meta description, a canonical link, 
 - Libraries are self-hosted in `assets/vendor/`: GSAP 3.15 (with ScrollTrigger, SplitText, Flip; free for commercial use since April 2025) and Lenis 1.3 for smooth scrolling. Do not load them from third-party CDNs.
 - `assets/js/site.js` adds `.motion` to `<html>` only when the libraries load and the visitor has not asked for reduced motion. Every hidden-before-animate style must be scoped under `.motion` so the page is readable without JavaScript.
 - Signature moments: first-visit preloader that draws the open box and drops the gold square (once per session), masked line reveals on headings, the pinned horizontal "Sound familiar?" section, the sticky process counter, scroll-reactive marquee, service rows that fill on hover, magnetic buttons, gold-square cursor on fine pointers, cross-page View Transitions.
+- The header is static: fixed at the top, never hides on scroll and does not animate during page transitions (founder decision, October 2026).
 - One owner per property: an element is animated either by a GSAP tween or by the `[data-reveal]` CSS transition, never both.
 - `assets/js/glow.js` renders the live "liquid gold" WebGL background (`canvas[data-shader]`) in the home hero and every closing call to action. It runs at reduced resolution, pauses off screen, draws one still frame for reduced motion and falls back to a CSS glow without WebGL. Use it instead of background video files.
 
