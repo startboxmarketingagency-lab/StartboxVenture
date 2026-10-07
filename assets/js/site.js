@@ -148,9 +148,9 @@
     };
 
     /* Intro: preloader (first visit per session), then hero */
-    var hero = document.querySelector('.hero2, .hero, .article-head');
+    var hero = document.querySelector('.hero3, .hero2, .hero, .article-head');
     var heroTitle = hero && hero.querySelector('h1');
-    var introItems = hero ? hero.querySelectorAll('.label, .lead, .btn-row, .hero2-meta, .crumbs, .article-meta, .dx, .frame') : [];
+    var introItems = hero ? hero.querySelectorAll('.pill, .label, .lead, .btn-row, .hero2-meta, .hero3-stats, .crumbs, .article-meta, .dx, .frame') : [];
     var startHero = function () {
       if (heroTitle) splitReveal(heroTitle, { delay: .05 });
       var tweenItems = [], cssItems = [];
