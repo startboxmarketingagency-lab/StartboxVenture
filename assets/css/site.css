@@ -812,3 +812,4 @@ p { line-height: 1.7; }
 .brief .hired li::marker { color: var(--stone); }
 .light .brief .hired-k { color: var(--gold-deep, #9C7A1E); }
 .light .brief .hired ol { color: var(--black); }
+.reach.one { grid-template-columns: 1fr; }
