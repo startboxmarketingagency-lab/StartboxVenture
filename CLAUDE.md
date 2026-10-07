@@ -5,13 +5,13 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 ## Non-negotiable content rules
 
 1. **Company location is India.** Every page, schema block, footer and meta tag must give the location as India (schema may add `addressRegion: Gujarat`). Never show a city (no "Vapi") and never imply the company is based anywhere else.
-   - India is the company's base, not its market limit. Do not put "India" in page titles, H1s, service names or article titles as a keyword (no "Branding services in India"). Say "based in India, working with businesses in 8+ countries"; schema `areaServed` is `Worldwide`.
+   - India is the company's base, not its market limit. Do not put "India" in page titles, H1s, service names or article titles as a keyword (no "Branding services in India"). Say "based in India, working with businesses in 10+ countries"; schema `areaServed` is `Worldwide`.
    - No city or region landing pages: StartBox is positioned as a global company. Where clients are (founder-confirmed, October 2026): India, United Kingdom, United States, United Arab Emirates, Israel, Canada, Netherlands, Italy, Spain, Japan; cities include London, Amsterdam, Mumbai, Pune, Bengaluru, Gurugram. These live in `COUNTRIES` and `CITIES` in the generator and feed the home page, schema `areaServed` and `llms.txt`.
 2. Never publish StartBox revenue figures, and never publish anything that reveals the founder's age.
 3. Never invent proof: no made-up results, testimonials, client names or numbers. Missing proof stays out until there is a real line ("needed X, we did Y, result Z").
 4. Clients are described by sector and country only. No client names and no brand-like pseudonyms (the old OrbitX/Velora style pages are retired and redirect to `/work`).
 5. Brand names shown: only Meesho, Feesto and AKQA, under "Brands our team has contributed to, with partner agencies", never as "Our clients". All other past brands (including Siemens and Rob Dial) stay private and are not shown anywhere.
-6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 8+ countries. Do not use "100% referral" as a stat, and do not claim StartBox has never run ads. Say work has come through referrals and direct outreach. Founder's 640+ projects belong in her bio only.
+6. Approved numbers only: 380+ projects since July 2024, 89+ brands, 10+ countries (founder-approved October 2026). Work page: three client cases plus ten strategy studies, one per client country, each labelled "Strategy study" and ending with "If we were hired"; studies are never presented as client results. Do not use "100% referral" as a stat, and do not claim StartBox has never run ads. Say work has come through referrals and direct outreach. Founder's 640+ projects belong in her bio only.
 7. Titles: Ashmita Mishra, Founder & CEO; Shivani Tripathi, Chief Technology Officer. Never "Partner", "Director" or "Managing".
 8. The Strategist / Builder / Executor labels are internal only. Services use plain names.
 9. Retired, never use: "Strategy · Technology · Growth".

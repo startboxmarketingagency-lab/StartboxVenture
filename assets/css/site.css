@@ -804,3 +804,11 @@ p { line-height: 1.7; }
 .ticks li { padding: var(--s3) 0 var(--s3) 28px; }
 .faq summary { padding: var(--s4) 48px var(--s4) 0; }
 @media (prefers-reduced-transparency: reduce) { .section:not(.light) .cards .card, .team .member { background: var(--charcoal); -webkit-backdrop-filter: none; backdrop-filter: none; } }
+
+/* Work: "If we were hired" block on strategy studies */
+.brief .hired { margin-top: auto; padding-top: 20px; border-top: 1px solid var(--line); }
+.brief .hired-k { display: block; font-size: 12px; font-weight: 500; letter-spacing: .16em; text-transform: uppercase; color: var(--gold); margin-bottom: 12px; }
+.brief .hired ol { margin: 0; padding-left: 1.2em; display: grid; gap: 8px; color: var(--ivory); font-size: 15px; line-height: 1.5; }
+.brief .hired li::marker { color: var(--stone); }
+.light .brief .hired-k { color: var(--gold-deep, #9C7A1E); }
+.light .brief .hired ol { color: var(--black); }
