@@ -6,7 +6,7 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 
 1. **Company location is India.** Every page, schema block, footer and meta tag must give the location as India (schema may add `addressRegion: Gujarat`). Never show a city (no "Vapi") and never imply the company is based anywhere else.
    - India is the company's base, not its market limit. Do not put "India" in page titles, H1s, service names or article titles as a keyword (no "Branding services in India"). Say "based in India, working with businesses in 8+ countries"; schema `areaServed` is `Worldwide`.
-   - Exception for local search: `/locations/south-gujarat` and `/locations/pune` target their towns by name (Surat, Navsari, Valsad, Bharuch, Ankleshwar; Pune, Pimpri-Chinchwad, Chakan, Hinjewadi). These are service areas, not an address. Each location page must stay genuinely local (industries, needs, FAQs); never clone a page and swap the city name, which Google treats as doorway spam. Add a new location only with its own content. Vapi is not listed.
+   - No city or region landing pages: StartBox is positioned as a global company. Where clients are (founder-confirmed, October 2026): India, United Kingdom, United States, United Arab Emirates, Israel, Canada, Netherlands, Italy, Spain, Japan; cities include London, Amsterdam, Mumbai, Pune, Bengaluru, Gurugram. These live in `COUNTRIES` and `CITIES` in the generator and feed the home page, schema `areaServed` and `llms.txt`.
 2. Never publish StartBox revenue figures, and never publish anything that reveals the founder's age.
 3. Never invent proof: no made-up results, testimonials, client names or numbers. Missing proof stays out until there is a real line ("needed X, we did Y, result Z").
 4. Clients are described by sector and country only. No client names and no brand-like pseudonyms (the old OrbitX/Velora style pages are retired and redirect to `/work`).
@@ -58,4 +58,4 @@ Every new page needs a unique `<title>` and meta description, a canonical link, 
 ## Search and AI visibility
 
 - `robots.txt` explicitly allows search and AI answer crawlers (OAI-SearchBot, ChatGPT-User, GPTBot, Claude-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others). `llms.txt` is generated with the site from the same data.
-- Local ranking depends mostly on the Google Business Profile, reviews that mention the town, and consistent name, phone and area details across directories. The website supports it; it cannot replace it.
+- Founder story page is on hold by the founder's decision (October 2026).
