@@ -6,6 +6,7 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 
 1. **Company location is India.** Every page, schema block, footer and meta tag must give the location as India (schema may add `addressRegion: Gujarat`). Never show a city (no "Vapi") and never imply the company is based anywhere else.
    - India is the company's base, not its market limit. Do not put "India" in page titles, H1s, service names or article titles as a keyword (no "Branding services in India"). Say "based in India, working with businesses in 8+ countries"; schema `areaServed` is `Worldwide`.
+   - Exception for local search: `/locations/south-gujarat` and `/locations/pune` target their towns by name (Surat, Navsari, Valsad, Bharuch, Ankleshwar; Pune, Pimpri-Chinchwad, Chakan, Hinjewadi). These are service areas, not an address. Each location page must stay genuinely local (industries, needs, FAQs); never clone a page and swap the city name, which Google treats as doorway spam. Add a new location only with its own content. Vapi is not listed.
 2. Never publish StartBox revenue figures, and never publish anything that reveals the founder's age.
 3. Never invent proof: no made-up results, testimonials, client names or numbers. Missing proof stays out until there is a real line ("needed X, we did Y, result Z").
 4. Clients are described by sector and country only. No client names and no brand-like pseudonyms (the old OrbitX/Velora style pages are retired and redirect to `/work`).
@@ -48,3 +49,13 @@ Every new page needs a unique `<title>` and meta description, a canonical link, 
 - Signature moments: first-visit preloader that draws the open box and drops the gold square (once per session), masked line reveals on headings, the pinned horizontal "Sound familiar?" section, the sticky process counter, scroll-reactive marquee, service rows that fill on hover, magnetic buttons, gold-square cursor on fine pointers, cross-page View Transitions.
 - One owner per property: an element is animated either by a GSAP tween or by the `[data-reveal]` CSS transition, never both.
 - `assets/js/glow.js` renders the live "liquid gold" WebGL background (`canvas[data-shader]`) in the home hero and every closing call to action. It runs at reduced resolution, pauses off screen, draws one still frame for reduced motion and falls back to a CSS glow without WebGL. Use it instead of background video files.
+
+## Layout
+
+- Premium means space: generous section padding, one idea per section, cards separated rather than packed. Before adding a section to the home page, remove or merge one.
+- No bullet marks, dots or squares before section labels or titles.
+
+## Search and AI visibility
+
+- `robots.txt` explicitly allows search and AI answer crawlers (OAI-SearchBot, ChatGPT-User, GPTBot, Claude-SearchBot, ClaudeBot, PerplexityBot, Google-Extended and others). `llms.txt` is generated with the site from the same data.
+- Local ranking depends mostly on the Google Business Profile, reviews that mention the town, and consistent name, phone and area details across directories. The website supports it; it cannot replace it.
