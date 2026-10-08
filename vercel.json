@@ -49,6 +49,15 @@
       ]
     },
     {
+      "source": "/collaborate",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
       "source": "/assets/startbox-ventures.vcf",
       "headers": [
         {
