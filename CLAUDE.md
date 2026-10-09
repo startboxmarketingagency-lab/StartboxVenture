@@ -42,6 +42,10 @@ Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.st
 
 `/meet` is the landing page behind the QR code on visiting cards. It is never linked from any page, is left out of `sitemap.xml` and `llms.txt`, and is `noindex` (meta tag plus `X-Robots-Tag` in `vercel.json`). It has its own minimal header and footer (`hidden=True` in the generator) and offers `assets/startbox-ventures.vcf` so visitors can save the contact. Its URL is printed on cards, so never rename or remove it; if the domain changes, the old domain must keep redirecting `/meet`.
 
+## Collaboration intake page
+
+`/collaborate` is the unlisted intake form we send to people who propose a collaboration. It is never linked from any page, is left out of `sitemap.xml` and `llms.txt`, and is `noindex` (meta tag plus `X-Robots-Tag` in `vercel.json`). It has the same minimal header and footer as `/meet`. Answers are emailed to team@startboxmarketing.com through FormSubmit (free, no account, no server code); nothing is stored on the site. The link is sent only when Ashmita or Shivani says so. Never rename or remove the URL once it has been shared.
+
 ## Contact buttons
 
 Every page has two fixed buttons at the bottom right: Email (`mailto:`) directly above WhatsApp.
