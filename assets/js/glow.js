@@ -1,4 +1,4 @@
-/* StartBox Ventures — live "liquid gold" backgrounds and spotlight glow.
+/* StartBox Ventures — live gold "aura" backgrounds and spotlight glow.
    A small WebGL shader renders moving light in brand colours behind the hero and the
    closing call to action. It works like a background video without downloading one:
    it renders at reduced resolution, pauses when off screen, draws a single still frame
@@ -16,22 +16,25 @@
     'float fbm(vec2 p){float s=0.,a=.5;mat2 k=mat2(1.6,1.2,-1.2,1.6);for(int i=0;i<5;i++){s+=a*n(p);p=k*p;a*=.5;}return s;}',
     'void main(){',
     ' vec2 p=(gl_FragCoord.xy-.5*r)/r.y;',
-    ' float T=t*.045;',
-    ' vec2 q=vec2(fbm(p*1.3+vec2(0.,T)),fbm(p*1.3+vec2(5.2,-T)));',
-    ' vec2 w=vec2(fbm(p*1.7+q*1.9+vec2(1.7,9.2)+T*1.4),fbm(p*1.7+q*1.9+vec2(8.3,2.8)-T));',
-    ' float f=fbm(p*1.15+w*1.7);',
-    // silk-like folds of light
-    ' float b=sin((f*5.5+p.x*1.2-p.y*.6)*3.14159);',
-    ' float silk=pow(smoothstep(.72,1.,b),1.6)*.95+pow(f,4.)*1.1;',
-    // light gathers towards the upper right, away from the headline
-    ' float focus=smoothstep(-1.1,.9,p.x*.9+p.y*.6+v*.3);',
-    ' float md=length(p-m);float glow=exp(-md*md*2.6)*.28;',
-    ' vec3 ink=vec3(.039);vec3 gold=vec3(.769,.6,.165);vec3 ivory=vec3(.957,.945,.918);',
-    ' vec3 c=ink+gold*(silk*.55*focus+glow*.8)+vec3(.02,.015,.005)*f;',
-    ' c+=ivory*pow(max(silk*focus-.55,0.),1.6)*.7;',
-    ' c=mix(c,ink,smoothstep(.15,-.7,p.y)*.55);',
-    ' c+=(h(gl_FragCoord.xy+fract(t))-.5)*.035;',
-    ' gl_FragColor=vec4(c,1.);',
+    ' float T=t*.06;',
+    // one soft aura: top centre for heroes, centre for the closing card
+    ' vec2 c=mix(vec2(0.,.4),vec2(0.,-.42),v);',
+    ' vec2 q=p+.22*vec2(fbm(p*1.4+vec2(T,0.))-.5,fbm(p*1.4+vec2(0.,-T)+4.)-.5);',
+    ' vec2 d2=(q-c)*vec2(mix(.62,.5,v),1.);',
+    ' float d=length(d2);',
+    ' float core=exp(-d*d*mix(7.,5.,v));',
+    ' float halo=exp(-d*mix(3.4,2.8,v));',
+    ' float flow=fbm(q*2.2+vec2(T*1.3,-T*.8));',
+    ' float rays=smoothstep(.35,.95,flow);',
+    ' vec3 ink=vec3(.039);vec3 amber=vec3(.34,.19,.04);vec3 gold=vec3(.769,.6,.165);vec3 hot=vec3(1.,.9,.72);',
+    ' vec3 col=mix(amber,gold,smoothstep(.1,.8,core));',
+    ' vec3 c3=ink+col*(halo*.48+core*.85)*(.65+.7*rays)*mix(1.,.6,v);',
+    ' c3+=hot*pow(core,5.)*.22;',
+    ' float md=length(p-m);c3+=gold*exp(-md*md*3.)*.06;',
+    // fade to black so text below sits on pure ink
+    ' c3=mix(ink,c3,mix(smoothstep(-.5,.2,p.y),1.,v));',
+    ' c3+=(h(gl_FragCoord.xy+fract(t))-.5)*.03;',
+    ' gl_FragColor=vec4(c3,1.);',
     '}'
   ].join('\n');
 
@@ -58,7 +61,7 @@
     this.gl = gl; this.canvas = canvas;
     this.u = { r: gl.getUniformLocation(prog, 'r'), t: gl.getUniformLocation(prog, 't'), m: gl.getUniformLocation(prog, 'm'), v: gl.getUniformLocation(prog, 'v') };
     this.variant = canvas.getAttribute('data-shader') === 'cta' ? 1 : 0;
-    this.mouse = [.55, .25]; this.target = [.55, .25];
+    this.mouse = [0, .5]; this.target = [0, .5];
     this.time = 18 + Math.random() * 20;
     this.visible = false; this.running = false;
     this.resize();

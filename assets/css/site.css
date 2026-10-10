@@ -835,3 +835,112 @@ p { line-height: 1.7; }
 .meet-footer { padding: 32px 0; }
 @media (max-width: 520px) { .site-header .meet-site { padding: 8px 12px; font-size: 14px; } .meet-actions .btn { flex: 1 1 calc(50% - 6px); justify-content: center; } }
 @media (min-width: 1100px) { .caps { grid-template-columns: repeat(6, minmax(0, 1fr)); } .caps .cap { grid-column: span 2; } .caps .cap:nth-child(n+4) { grid-column: span 3; } }
+
+/* ==========================================================================
+   v6 "aura" (founder reference, October 2026)
+   One soft gold aura at the top centre, centred and quieter type, an all-dark
+   page, soft rounded surfaces and pill buttons, thin dividers instead of boxes.
+   ========================================================================== */
+:root { --wrap: 1180px; --r: 18px; --r-sm: 12px; --hair: rgba(244, 241, 234, .08); }
+body { background: var(--black); }
+
+/* Type: calmer scale */
+h1 { font-size: clamp(40px, 5.6vw, 84px); letter-spacing: -.04em; line-height: 1.02; }
+h2 { font-size: clamp(30px, 3.4vw, 50px); letter-spacing: -.03em; line-height: 1.08; }
+.lead { font-size: clamp(17px, 1.3vw, 19px); }
+
+/* Buttons and pills */
+.btn { border-radius: 999px; min-height: 48px; padding: 12px 24px; font-size: 15px; }
+.pill { border-radius: 999px; padding: 8px 16px; font-size: 12px; }
+.fab { border-radius: 999px; }
+.svc-row .arr { border-radius: 999px; }
+
+/* Header: transparent, hairline only */
+.site-header { background: rgba(10, 10, 10, .45); border-bottom: 1px solid var(--hair); }
+
+/* Hero: centred over the aura */
+.hero3 { text-align: center; min-height: min(100svh, 980px); display: flex; flex-direction: column; justify-content: center; padding-bottom: clamp(64px, 10vh, 120px); }
+.hero3-scrim { background: linear-gradient(180deg, rgba(10, 10, 10, 0) 45%, rgba(10, 10, 10, .9) 100%); }
+.hero3.no-gl, .page-hero.no-gl { background: radial-gradient(55% 45% at 50% 0%, rgba(196, 153, 42, .35), rgba(10, 10, 10, 0) 70%), var(--black); }
+.hero3 .pill { margin: 0 auto var(--s4); }
+.hero3 h1 { font-size: clamp(40px, 5.8vw, 88px); max-width: 17ch; margin: 0 auto var(--s4); line-height: 1.02; letter-spacing: -.04em; }
+.hero3-row { display: flex; flex-direction: column; align-items: center; gap: var(--s4); }
+.hero3-row .lead { max-width: 56ch; margin: 0 auto; }
+.hero3-row .btn-row, .meet-actions { justify-content: center; }
+.hero3-stats { margin: clamp(56px, 9vh, 104px) auto 0; max-width: 920px; background: transparent; border: 0; border-top: 1px solid var(--hair); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.hero3-stats > div { padding: var(--s4) var(--s3) 0; }
+.hero3-stats > div + div { border-left: 0; }
+.hero3-stats .tag { display: none; }
+.hero3-stats b { font-size: clamp(26px, 2.6vw, 38px); }
+
+/* Inner page heroes: centred too */
+.page-hero { text-align: center; min-height: min(70svh, 720px); justify-content: center; }
+.page-hero h1 { font-size: clamp(38px, 5.2vw, 76px); max-width: 18ch; margin-left: auto; margin-right: auto; letter-spacing: -.04em; line-height: 1.04; }
+.page-hero .lead, .page-hero p { margin-left: auto; margin-right: auto; }
+.page-hero .crumbs ol, .page-hero .btn-row, .page-hero .article-meta { justify-content: center; }
+.page-hero .hero-grid { grid-template-columns: 1fr; justify-items: center; }
+.page-hero .label { justify-content: center; }
+
+/* Section heads: label, heading, line. Content sits under a hairline. */
+.sec-head { grid-template-columns: 1fr; gap: var(--s3); max-width: none; padding-bottom: var(--s5); border-bottom: 1px solid var(--hair); margin-bottom: clamp(40px, 6vw, 72px); align-items: start; }
+.sec-head .lead { justify-self: start; max-width: 60ch; }
+.sec-head h2 { max-width: 22ch; }
+
+/* All-dark page: former ivory sections become quiet black */
+.panel { background: var(--black); }
+.section + .section { border-top: 1px solid var(--hair); }
+.cta-aura, .section + .cta-aura { border-top: 0; }
+
+/* Soft surfaces */
+.cards .card, .cards .brief, .cards .case, .team .member, .hs-card, .cap, .posts .post, .reach-col, .glass, .panel-card, .faq details { border-radius: var(--r); }
+.section:not(.light) .cards .card, .team .member, .cards .brief, .cards .case, .posts .post, .reach-col, .cap { background: rgba(244, 241, 234, .025); border: 1px solid var(--hair); -webkit-backdrop-filter: none; backdrop-filter: none; box-shadow: none; }
+.cap li { border-radius: 999px; border-color: var(--hair); }
+.names span { border-radius: var(--r); border-color: var(--hair); }
+.brief::after, .post::after, .hs-card::after { display: none; }
+.spot { overflow: hidden; }
+
+/* Prices on dark */
+.prices { gap: var(--s3); background: transparent; border: 0; }
+.price { background: rgba(244, 241, 234, .025); color: var(--ivory); border: 1px solid var(--hair); border-radius: var(--r); padding: var(--s5) var(--s4); }
+.price .k, .price small, .price p { color: var(--stone); }
+.price.feature { background: rgba(196, 153, 42, .08); border-color: rgba(196, 153, 42, .35); }
+
+/* Steps, ticks, faq on dark */
+.step-n { border-radius: 999px; }
+.step-price { border-radius: 999px; }
+
+/* Closing call to action: glow contained in a card */
+.cta-aura { background: var(--black); }
+.cta-card { position: relative; isolation: isolate; overflow: hidden; border-radius: 28px; border: 1px solid rgba(196, 153, 42, .25); background: var(--black); }
+.cta-card > canvas.shader { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; }
+.cta-card::after { content: ""; position: absolute; inset: 0; z-index: -1; background: radial-gradient(80% 70% at 50% 50%, rgba(10, 10, 10, .15), rgba(10, 10, 10, .65)); pointer-events: none; }
+.cta-card.no-gl { background: radial-gradient(60% 60% at 50% 45%, rgba(196, 153, 42, .32), rgba(10, 10, 10, 0) 70%), var(--black); }
+.cta-panel { text-align: center; padding: clamp(56px, 9vw, 120px) clamp(24px, 6vw, 96px); background: transparent; border: 0; -webkit-backdrop-filter: none; backdrop-filter: none; }
+.cta-band h2 { font-size: clamp(32px, 4.6vw, 64px); max-width: 18ch; margin: 0 auto var(--s3); letter-spacing: -.035em; line-height: 1.04; }
+.cta-band .lead { margin: 0 auto; }
+.cta-band .btn-row { justify-content: center; }
+.cta-band .label { justify-content: center; }
+.cta-aura .promise { text-align: left; margin-top: var(--s6); }
+
+/* Orbs: one quiet glow is enough */
+.orb { opacity: .07; }
+
+@media (max-width: 760px) {
+  .hero3-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .hero3-stats > div { padding: var(--s3) 6px 0; }
+  .hero3-stats > div > span { font-size: 12px; }
+  .cta-card { border-radius: 20px; }
+}
+/* v6 refinements: calmer hero scale, dark header, no box on stats */
+.site-header { background: rgba(10, 10, 10, .72); }
+.hero3 h1 { font-size: clamp(36px, 4.8vw, 72px); max-width: 18ch; }
+.page-hero h1 { font-size: clamp(36px, 4.6vw, 68px); }
+.hero3-stats.glass { border-radius: 0; border-left: 0; border-right: 0; border-bottom: 0; }
+.menu-btn { border-radius: 999px; }
+@media (max-width: 520px) { .hero3 .pill { letter-spacing: .12em; font-size: 11px; } }
+.cta-card::after { background: linear-gradient(180deg, rgba(10, 10, 10, .55) 0%, rgba(10, 10, 10, .35) 55%, rgba(10, 10, 10, .1) 100%); }
+.cta-band .lead { color: #D9D5CC; }
+.cta-aura .promise p { color: #CFCBC2; }
+.page-hero .hero3-scrim { background: radial-gradient(70% 55% at 50% 0%, rgba(10, 10, 10, .35), rgba(10, 10, 10, 0) 70%), linear-gradient(180deg, rgba(10, 10, 10, 0) 50%, rgba(10, 10, 10, .85) 100%); }
+.page-hero .crumbs, .page-hero .crumbs a { color: #E6E2D9; text-shadow: 0 1px 12px rgba(10, 10, 10, .8); }
+.page-hero .label { color: #E6E2D9; text-shadow: 0 1px 12px rgba(10, 10, 10, .8); }

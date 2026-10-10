@@ -23,6 +23,7 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 - Instrument Sans only (600 headings, 400 body, 500 caps labels). Sentence-case headings, at most one gold word per heading.
 - Colours: Black #0A0A0A, Ivory #F4F1EA, Gold #C4992A (on dark only), Gold Deep #9C7A1E (gold on light), Charcoal #161616, Stone #A8A49C, Warm Grey #5C5850, Line #262626. No gradients, no gold body text.
 - Light and glass (approved by the founder, October 2026): gold may appear as *light* (the live shader backgrounds, soft glow orbs, hover halos, spotlight on cards) and dark glass surfaces may use backdrop blur. Never as a gradient fill on text, logos or buttons, never rainbow or extra colours, and glass text must stay at WCAG AA contrast.
+- Look and feel (founder reference, October 2026): an all-dark page (no ivory sections), one soft gold aura at the top centre of each hero and inside the closing call-to-action card, centred hero text with a calm type scale, thin hairline dividers, soft rounded surfaces (18 px cards, pill buttons). The reference used orange; StartBox uses its own gold.
 - Logos come only from `assets/brand/` (copied byte-for-byte from StartBox_Brand_Kit). Never retype or redraw the wordmark. Primary logo min width 140 px.
 - Voice: direct, specific, plain words. No exclamation marks, hype words or emoji.
 
@@ -57,7 +58,7 @@ Every new page needs a unique `<title>` and meta description, a canonical link, 
 - Signature moments: first-visit preloader that draws the open box and drops the gold square (once per session), masked line reveals on headings, the pinned horizontal "Sound familiar?" section, the sticky process counter, scroll-reactive marquee, service rows that fill on hover, magnetic buttons, gold-square cursor on fine pointers, cross-page View Transitions.
 - The header is static: fixed at the top, never hides on scroll and does not animate during page transitions (founder decision, October 2026).
 - One owner per property: an element is animated either by a GSAP tween or by the `[data-reveal]` CSS transition, never both.
-- `assets/js/glow.js` renders the live "liquid gold" WebGL background (`canvas[data-shader]`) in the home hero and every closing call to action. It runs at reduced resolution, pauses off screen, draws one still frame for reduced motion and falls back to a CSS glow without WebGL. Use it instead of background video files.
+- `assets/js/glow.js` renders the live gold "aura" WebGL background (`canvas[data-shader]`) in every hero and inside every closing call-to-action card. It runs at reduced resolution, pauses off screen, draws one still frame for reduced motion and falls back to a CSS glow without WebGL. Use it instead of background video files.
 
 ## Layout
 
