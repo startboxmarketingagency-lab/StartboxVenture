@@ -23,6 +23,18 @@
     });
   }
 
+  /* Phones: the contact buttons step aside while the opening section or the footer (which have their own) is on screen */
+  var fabs = document.querySelectorAll('.fab');
+  if (fabs.length && 'IntersectionObserver' in window) {
+    var heroEl = document.querySelector('.hero3, .page-hero, .article-head'), footEl = document.querySelector('.site-footer'), seen = {};
+    var fio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { seen[e.target === footEl ? 'f' : 'h'] = e.isIntersecting; });
+      document.body.classList.toggle('fab-off', !!(seen.h || seen.f));
+    }, { threshold: 0.2 });
+    if (heroEl) fio.observe(heroEl);
+    if (footEl) fio.observe(footEl);
+  }
+
   var form = document.getElementById('enquiry');
   if (form) {
     form.addEventListener('submit', function (e) {

@@ -944,3 +944,36 @@ h2 { font-size: clamp(30px, 3.4vw, 50px); letter-spacing: -.03em; line-height: 1
 .page-hero .hero3-scrim { background: radial-gradient(70% 55% at 50% 0%, rgba(10, 10, 10, .35), rgba(10, 10, 10, 0) 70%), linear-gradient(180deg, rgba(10, 10, 10, 0) 50%, rgba(10, 10, 10, .85) 100%); }
 .page-hero .crumbs, .page-hero .crumbs a { color: #E6E2D9; text-shadow: 0 1px 12px rgba(10, 10, 10, .8); }
 .page-hero .label { color: #E6E2D9; text-shadow: 0 1px 12px rgba(10, 10, 10, .8); }
+
+/* ==========================================================================
+   v6 phone fixes (October 2026)
+   ========================================================================== */
+.menu-btn .i-close { display: none; }
+.menu-btn[aria-expanded="true"] .i-menu { display: none; }
+.menu-btn[aria-expanded="true"] .i-close { display: block; }
+@media (max-width: 1080px) {
+  /* a blurred header traps the fixed menu inside it, so phones get a solid header */
+  .site-header { -webkit-backdrop-filter: none; backdrop-filter: none; background: rgba(10, 10, 10, .96); }
+  .nav { inset: var(--header-h) 0 auto 0; height: calc(100dvh - var(--header-h)); }
+}
+@media (max-width: 760px) {
+  .section { padding: 80px 0; }
+  .section.tight { padding: 64px 0; }
+  .sec-head { margin-bottom: 40px; padding-bottom: 28px; }
+  .hero3 { padding-bottom: 48px; }
+  .page-hero { min-height: auto; padding-bottom: 56px; }
+  .pill-x { display: none; }
+  .msme-title { font-size: clamp(40px, 12.5vw, 64px); line-height: 1; }
+  .svc-row { padding: var(--s4) 0; }
+  .svc-row h3 { font-size: clamp(26px, 7vw, 34px); }
+  .hs-card { min-height: 360px; padding: var(--s5) var(--s4); }
+  .hs-card q { margin: var(--s4) 0 var(--s3); }
+  .chip { border-radius: 999px; }
+  .cta-card::after { background: linear-gradient(180deg, rgba(10, 10, 10, .55), rgba(10, 10, 10, .62)); }
+  .fab { transition: opacity .3s var(--ease), transform .3s var(--ease); }
+  body.fab-off .fab { opacity: 0; pointer-events: none; transform: translateY(16px); }
+}
+@media (max-width: 520px) {
+  .fab { width: 46px; height: 46px; min-height: 46px; padding: 0; justify-content: center; right: 12px; bottom: 12px; }
+  .fab-mail { bottom: 66px; }
+}
