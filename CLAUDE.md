@@ -37,7 +37,7 @@ WhatsApp/phone +91 96964 39231 · team@startboxmarketing.com · LinkedIn: linked
 
 ## Domain
 
-Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.startboxmarketing.com`. When startboxventures.com goes live, replace the domain everywhere in one pass and keep the old domain redirecting.
+Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.startboxventures.in`. When startboxventures.com goes live, replace the domain everywhere in one pass and keep the old domain redirecting.
 
 ## Business-card page
 
