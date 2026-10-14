@@ -38,4 +38,4 @@ Allow: /
 User-agent: *
 Allow: /
 
-Sitemap: https://www.startboxventures.in/sitemap.xml
+Sitemap: https://startboxventures.in/sitemap.xml

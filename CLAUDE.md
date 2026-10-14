@@ -6,6 +6,7 @@ Static site deployed on Vercel (`cleanUrls`, see `vercel.json`). Pages are plain
 
 1. **Company location is India.** Every page, schema block, footer and meta tag must give the location as India (schema may add `addressRegion: Gujarat`). Never show a city (no "Vapi") and never imply the company is based anywhere else.
    - India is the company's base, not its market limit. Do not put "India" in page titles, H1s, service names or article titles as a keyword (no "Branding services in India"). Say "based in India, working with businesses in 10+ countries"; schema `areaServed` is `Worldwide`.
+   - Exception (founder decision, October 2026): `/msme` names the states it serves, Gujarat and Maharashtra (visible copy, meta description and its Service schema `areaServed`). No other page names a state or city, and `llms.txt` says "based in India" only.
    - No city or region landing pages: StartBox is positioned as a global company. Where clients are (founder-confirmed, October 2026): India, United Kingdom, United States, United Arab Emirates, Israel, Canada, Netherlands, Italy, Spain, Japan. These live in `COUNTRIES` in the generator and feed the home page, schema `areaServed` and `llms.txt`. Do not list client cities anywhere; countries are enough (founder decision, October 2026).
 2. Never publish StartBox revenue figures, and never publish anything that reveals the founder's age.
 3. Never invent proof: no made-up results, testimonials, client names or numbers. Missing proof stays out until there is a real line ("needed X, we did Y, result Z").
@@ -37,7 +38,7 @@ WhatsApp/phone +91 96964 39231 · team@startboxmarketing.com · LinkedIn: linked
 
 ## Domain
 
-Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://www.startboxventures.in`. When startboxventures.com goes live, replace the domain everywhere in one pass and keep the old domain redirecting.
+Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://startboxventures.in` (no www: the live site redirects www to the bare domain, October 2026). When startboxventures.com goes live, replace the domain everywhere in one pass and keep the old domain redirecting.
 
 ## Business-card page
 
