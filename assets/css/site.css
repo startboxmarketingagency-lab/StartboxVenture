@@ -977,3 +977,23 @@ h2 { font-size: clamp(30px, 3.4vw, 50px); letter-spacing: -.03em; line-height: 1
   .fab { width: 46px; height: 46px; min-height: 46px; padding: 0; justify-content: center; right: 12px; bottom: 12px; }
   .fab-mail { bottom: 66px; }
 }
+
+/* Brand and agency logos (official files in assets/brand/partners, shown one-colour ivory) */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.logo-band { display: grid; grid-template-columns: minmax(0, 2.2fr) minmax(0, 1fr); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.logo-band .lb-group { padding: var(--s4) 0; }
+.logo-band .lb-agencies { padding-left: var(--s5); border-left: 1px solid var(--line); }
+.logo-band .lb-label { display: block; margin-bottom: var(--s3); font-size: 12px; font-weight: 500; letter-spacing: .12em; text-transform: uppercase; color: var(--stone); }
+.logo-band .lb-logos { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: center; gap: var(--s3) clamp(28px, 4vw, 56px); }
+.logo-band .lb-logos li { display: flex; align-items: center; min-height: 32px; opacity: .72; transition: opacity .3s; }
+.logo-band .lb-logos li:hover { opacity: 1; }
+.logo-band img { display: block; width: auto; max-width: 100%; }
+.logo-band .lb-word { font-size: clamp(19px, 1.7vw, 23px); font-weight: 600; letter-spacing: -.01em; color: var(--ivory); }
+.logo-band.in-hero { margin-top: var(--s5); border-color: var(--glass-line, var(--line)); text-align: center; }
+.logo-band.in-hero .lb-logos { justify-content: center; }
+.logo-band.in-hero .lb-agencies { border-color: var(--glass-line, var(--line)); }
+@media (max-width: 860px) {
+  .logo-band { grid-template-columns: 1fr; }
+  .logo-band .lb-agencies { padding-left: 0; border-left: 0; border-top: 1px solid var(--line); }
+  .logo-band .lb-logos { gap: var(--s3) 32px; }
+}
