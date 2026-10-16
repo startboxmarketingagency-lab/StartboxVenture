@@ -296,26 +296,31 @@
         scrollTrigger: { trigger: stack, start: 'top 88%', end: 'top 38%', scrub: 1, invalidateOnRefresh: true } });
     });
 
-    /* Numbers: a full-screen pause; figures arrive one by one and count up */
-    var numSec = document.querySelector('.numbers');
-    if (numSec) {
-      var nums = G.utils.toArray(numSec.querySelectorAll('.num')), where = numSec.querySelector('.num-where');
-      var countTo = function (el, p) { var end = parseInt(el.getAttribute('data-count-pin'), 10); el.textContent = Math.round(end * p); };
-      mm.add('(min-width: 721px)', function () {
-        var tl = G.timeline({ scrollTrigger: { trigger: numSec.querySelector('.num-stage'), start: 'top top', end: '+=110%', pin: true, scrub: 1 } });
-        nums.forEach(function (n, i) {
-          var c = n.querySelector('[data-count-pin]'), o = { p: 0 };
-          tl.from(n, { y: 80, opacity: 0, duration: 1, ease: 'power3.out' }, i * .7)
-            .to(o, { p: 1, duration: 1.2, ease: 'power2.out', onUpdate: function () { countTo(c, o.p); } }, i * .7);
-        });
-        if (where) tl.from(where, { y: 30, opacity: 0, duration: .8 }, '>-0.3');
-      });
-      mm.add('(max-width: 720px)', function () {
-        numSec.querySelectorAll('[data-count-pin]').forEach(function (c) {
-          var o = { p: 0 };
-          G.to(o, { p: 1, duration: 1.8, ease: 'power3.out', scrollTrigger: { trigger: c, start: 'top 90%', once: true }, onUpdate: function () { countTo(c, o.p); } });
-        });
-      });
+    /* AI chapter: pin the stage, step through four beats, hand scroll progress to the 3D scene (ai3d.js) */
+    var aiSec = document.querySelector('.ai-chapter');
+    if (aiSec) {
+      window.__ai = window.__ai || { p: 0 };
+      var aiBeats = aiSec.querySelectorAll('.ai-beat'), aiDots = aiSec.querySelectorAll('.ai-dots i'), aiCur = -1, aiCounted = false;
+      var aiCuts = [0, .24, .48, .72];
+      var aiSet = function (i) {
+        if (i === aiCur) return; aiCur = i;
+        Array.prototype.forEach.call(aiBeats, function (b, j) { b.classList.toggle('on', j === i); });
+        Array.prototype.forEach.call(aiDots, function (d, j) { d.classList.toggle('on', j <= i); });
+        if (i === aiBeats.length - 1 && !aiCounted) {
+          aiCounted = true;
+          aiSec.querySelectorAll('[data-count-pin]').forEach(function (c, k) {
+            var end = parseInt(c.getAttribute('data-count-pin'), 10), o = { v: 0 };
+            G.to(o, { v: end, duration: 1.6, delay: k * .15, ease: 'power3.out', onUpdate: function () { c.textContent = Math.round(o.v); } });
+          });
+        }
+      };
+      aiSet(0);
+      ST.create({ trigger: aiSec.querySelector('.ai-stage'), start: 'top top', end: '+=320%', pin: true, anticipatePin: 1,
+        onUpdate: function (self) {
+          window.__ai.p = self.progress;
+          var i = 0; for (var k = 0; k < aiCuts.length; k++) if (self.progress >= aiCuts[k]) i = k;
+          aiSet(i);
+        } });
     }
 
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { ST.refresh(); });

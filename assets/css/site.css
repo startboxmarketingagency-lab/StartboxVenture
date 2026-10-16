@@ -1073,3 +1073,53 @@ h2 { font-size: clamp(30px, 3.4vw, 50px); letter-spacing: -.03em; line-height: 1
 
 /* Cursor and magnetic buttons retired (founder decision, October 2026) */
 .cursor { display: none !important; }
+
+/* ===== AI adoption chapter: pinned 3D scene, four beats, ends on the numbers (October 2026) ===== */
+.ai-chapter { position: relative; background: var(--black); }
+.ai-stage { position: relative; min-height: 100svh; overflow: hidden; display: flex; align-items: center; isolation: isolate; }
+.ai-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -2; display: block; }
+.ai-stage::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(90deg, rgba(10, 10, 10, .92) 0%, rgba(10, 10, 10, .72) 34%, rgba(10, 10, 10, 0) 62%); }
+.ai-labels { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.ai-labels span { position: absolute; left: 0; top: 0; transform: translate(-50%, -50%); font-size: 12px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--ivory); white-space: nowrap; padding: 6px 10px; border-radius: 999px; background: rgba(14, 14, 14, .62); border: 1px solid var(--glass-line); -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px); opacity: 0; transition: opacity .4s; }
+.ai-copy { position: relative; z-index: 1; width: 100%; padding-top: clamp(96px, 12vw, 160px); padding-bottom: clamp(96px, 12vw, 160px); }
+.ai-beats { list-style: none; margin: 0; padding: 0; max-width: 520px; }
+.ai-beat + .ai-beat { margin-top: var(--s6); }
+.ai-beat h3 { font-size: clamp(30px, 3.6vw, 52px); letter-spacing: -.035em; line-height: 1.06; margin: 0 0 var(--s3); }
+.ai-beat p { color: var(--stone); font-size: clamp(17px, 1.4vw, 20px); margin: 0; max-width: 44ch; }
+.ai-nums { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: var(--s3); margin-top: var(--s4); }
+.ai-nums .num b { font-size: clamp(40px, 5.4vw, 84px); }
+.ai-nums .num > span { font-size: 14px; margin-top: 10px; }
+.ai-last .num-where { margin-top: var(--s4); padding-top: var(--s3); font-size: 15px; }
+.ai-dots { display: none; }
+/* With motion: beats share one spot and cross-fade; the stage is pinned by site.js */
+.motion .ai-stage { height: 100svh; }
+.motion .ai-beats { position: relative; min-height: min(62svh, 560px); }
+.motion .ai-beat { position: absolute; left: 0; right: 0; top: 50%; margin: 0; opacity: 0; transform: translateY(calc(-50% + 24px)); transition: opacity .7s var(--ease), transform .9s var(--ease); pointer-events: none; }
+.motion .ai-beat.on { opacity: 1; transform: translateY(-50%); pointer-events: auto; }
+.motion .ai-dots { display: flex; gap: 8px; margin-top: var(--s4); }
+.motion .ai-dots i { width: 28px; height: 2px; background: var(--line); transition: background .4s; }
+.motion .ai-dots i.on { background: var(--gold); }
+@media (max-width: 860px) {
+  .ai-stage::after { background: linear-gradient(0deg, rgba(10, 10, 10, .95) 0%, rgba(10, 10, 10, .8) 42%, rgba(10, 10, 10, 0) 72%); }
+  .motion .ai-stage { align-items: flex-end; }
+  .motion .ai-copy { padding-bottom: clamp(40px, 8svh, 72px); padding-top: 0; }
+  .motion .ai-beats { min-height: 46svh; }
+  .motion .ai-beat { top: auto; bottom: 0; transform: translateY(24px); }
+  .motion .ai-beat.on { transform: none; }
+  .ai-beat h3 { font-size: clamp(26px, 7.4vw, 36px); }
+  .ai-nums .num b { font-size: clamp(34px, 11vw, 52px); }
+  .ai-labels span { font-size: 10px; padding: 4px 8px; }
+  .motion .ai-copy > .label { display: none; }
+}
+@media (max-width: 520px) { .ai-nums { gap: var(--s2); } .ai-nums .num > span { font-size: 12px; } }
+/* No 3D available: a quiet gold glow instead of the scene */
+.ai-chapter.no-gl .ai-stage { background: radial-gradient(50% 60% at 72% 50%, rgba(196, 153, 42, .18), rgba(10, 10, 10, 0) 70%), var(--black); }
+/* Without motion (reduced motion or no libraries): beats stack, the still scene sits in its own frame */
+html:not(.motion) .ai-stage { display: block; }
+html:not(.motion) .ai-stage::after { display: none; }
+html:not(.motion) .ai-canvas { left: auto; right: 0; top: 0; width: 52%; height: min(100svh, 900px); }
+@media (max-width: 860px) {
+  html:not(.motion) .ai-canvas { position: relative; width: 100%; height: 60svh; }
+  html:not(.motion) .ai-labels { display: none; }
+}
+@media (min-width: 861px) { html:not(.motion) .ai-beats { max-width: 46%; } }
