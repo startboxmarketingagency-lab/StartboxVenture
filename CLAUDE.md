@@ -35,11 +35,13 @@ Discovery call + one-page summary free · Business audit ₹8,000 (48 h, adjuste
 
 ## Contact
 
-WhatsApp/phone +91 96964 39231 · team@startboxmarketing.com · LinkedIn: linkedin.com/company/startbox-ventures-marketing-and-consultancy/
+WhatsApp/phone +91 96964 39231 · team@startboxventures.in · LinkedIn: linkedin.com/company/startbox-ventures-marketing-and-consultancy/
 
 ## Domain
 
 Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://startboxventures.in` (no www: the live site redirects www to the bare domain, October 2026). When startboxventures.com goes live, replace the domain everywhere in one pass and keep the old domain redirecting.
+
+The old domain startboxmarketing.com has been dropped (founder decision, October 2026). Never link to it or use an @startboxmarketing.com address; the business email is team@startboxventures.in.
 
 ## Business-card page
 
@@ -47,7 +49,7 @@ Canonical URLs, `sitemap.xml`, `robots.txt` and the OG image use `https://startb
 
 ## Collaboration intake page
 
-`/collaborate` is the unlisted intake form we send to people who propose a collaboration. It is never linked from any page, is left out of `sitemap.xml` and `llms.txt`, and is `noindex` (meta tag plus `X-Robots-Tag` in `vercel.json`). It has the same minimal header and footer as `/meet`. Answers are emailed to team@startboxmarketing.com through FormSubmit (free, no account, no server code); nothing is stored on the site. The link is sent only when Ashmita or Shivani says so. Never rename or remove the URL once it has been shared.
+`/collaborate` is the unlisted intake form we send to people who propose a collaboration. It is never linked from any page, is left out of `sitemap.xml` and `llms.txt`, and is `noindex` (meta tag plus `X-Robots-Tag` in `vercel.json`). It has the same minimal header and footer as `/meet`. Answers are emailed to team@startboxventures.in through FormSubmit (free, no account, no server code); nothing is stored on the site. The link is sent only when Ashmita or Shivani says so. Never rename or remove the URL once it has been shared.
 
 ## Contact buttons
 
