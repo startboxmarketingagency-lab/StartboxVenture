@@ -29,12 +29,42 @@
     },
     {
       "source": "/brand-diagnosis",
-      "destination": "/business-audit",
+      "destination": "/how-we-work#diagnosis",
       "permanent": true
     },
     {
       "source": "/insights/google-business-profile-checklist-india",
       "destination": "/insights/google-business-profile-checklist",
+      "permanent": true
+    },
+    {
+      "source": "/business-audit",
+      "destination": "/how-we-work#diagnosis",
+      "permanent": true
+    },
+    {
+      "source": "/services/look-trustworthy",
+      "destination": "/services#digital-presence",
+      "permanent": true
+    },
+    {
+      "source": "/services/sell-online",
+      "destination": "/services#go-to-market",
+      "permanent": true
+    },
+    {
+      "source": "/services/get-more-customers",
+      "destination": "/services#campaign-manager",
+      "permanent": true
+    },
+    {
+      "source": "/services/content-and-personal-brand",
+      "destination": "/services#personal-branding",
+      "permanent": true
+    },
+    {
+      "source": "/services/run-the-business-better",
+      "destination": "/services#marketing-partner",
       "permanent": true
     }
   ],

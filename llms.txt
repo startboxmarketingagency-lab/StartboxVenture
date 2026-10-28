@@ -1,20 +1,19 @@
 # StartBox Ventures
 
-> StartBox Ventures is a Marketing & Digital Consultancy based in India, working with businesses in 10+ countries. We diagnose before we prescribe: we find what is really stopping a business's sales, then build and run what fixes it. 380+ projects and 89+ brands since July 2024.
+> StartBox Ventures is a Marketing & Digital Consultancy based in India, working with businesses in 10+ countries. We're the marketing brain for growing businesses: we diagnose what's broken, plan the fix, and get it done. Every engagement starts with a free diagnosis: we show you your two biggest problems in the first call. 380+ projects and 89+ brands since July 2024.
 
 Ashmita Mishra: Founder, CEO and Chief Strategy Officer. Shivani Tripathi: COO and Chief Technology Officer.
 Contact: WhatsApp or call +91 96964 39231, team@startboxventures.in.
-Prices: discovery call free; business audit ₹8,000 (report in 48 hours); one-time projects from ₹35,000 to ₹5,00,000+; monthly plans from ₹35,000 to ₹2,00,000+ per month; StartBox for MSME packages from ₹15,000.
+Prices: diagnosis call free; Digital Presence Setup from ₹45,000; Go-to-market Strategy from ₹55,000; Personal Branding from ₹40,000; Campaign Manager from ₹40,000; Marketing Partner on request; StartBox for MSME from ₹15,000.
 Clients in: India, United Kingdom, United States, United Arab Emirates, Israel, Canada, Netherlands, Italy, Spain, Japan.
 
-## Services
-- [Branding, website design and company profiles](https://startboxventures.in/services/look-trustworthy): Branding, websites built to bring enquiries, and company profiles or personal portfolios for businesses, founders and experts. Diagnosed first, priced in writing.
-- [Online stores, marketplace listings and course launches](https://startboxventures.in/services/sell-online): Set up your own online store, list properly on Amazon, Flipkart and Meesho, or launch an online course. The right pieces in the right order: offer, website, payments, then marketing.
-- [Meta ads, AI video ads and sales funnels](https://startboxventures.in/services/get-more-customers): Meta ads and AI video ads that reach the right people, and sales funnels that turn someone who sees you into someone who pays. We fix the leaks before we scale the spend.
-- [Content strategy, social media management and video editing](https://startboxventures.in/services/content-and-personal-brand): Content strategy for YouTube, LinkedIn, X and Instagram, social media management and video editing for brands, founders, coaches and experts. Content that leads somewhere.
-- [Monthly growth partner, software and automation](https://startboxventures.in/services/run-the-business-better): A monthly growth partner working on your numbers with our founder, plus software and automation that connect your website, data and sales so less is done by hand.
-- [StartBox for MSME](https://startboxventures.in/msme): Google Business Profile, reviews, WhatsApp Business, local ads and simple websites for local businesses in Gujarat and Maharashtra.
-- [Business audit](https://startboxventures.in/business-audit): A written audit of brand, website, social media, ads and sales process. ₹8,000, 48 hours.
+## Products
+- [Digital Presence Setup](https://startboxventures.in/services#digital-presence): For existing businesses that look scattered online. We set up your business online so customers find you, trust you, and buy, without you wasting money on random fixes. From ₹45,000.
+- [Go-to-market Strategy](https://startboxventures.in/services#go-to-market): For founders with an idea, not launched yet. You have the idea. We give you the step-by-step plan to launch it and start selling. From ₹55,000.
+- [Personal Branding](https://startboxventures.in/services#personal-branding): For b2B founders, founders becoming coaches or speakers, and coaches. Your name should open doors before your pitch does. We build the personal brand that makes people trust you first. From ₹40,000.
+- [Campaign Manager](https://startboxventures.in/services#campaign-manager): For one sale, offer or launch. One campaign, planned and managed end to end. From ₹40,000.
+- [Marketing Partner](https://startboxventures.in/services#marketing-partner): For clients who've worked with us. Every marketing decision runs through us before money is spent. On request.
+- [StartBox for MSME](https://startboxventures.in/msme): We help businesses grow online by telling them exactly what to fix, and then fixing it. Monthly handling, website, copywriting, content strategy, video editing and videography, for businesses in Gujarat and Maharashtra. From ₹15,000.
 
 ## Company
 - [How we work and prices](https://startboxventures.in/how-we-work)
@@ -30,7 +29,7 @@ Clients in: India, United Kingdom, United States, United Arab Emirates, Israel, 
 - [How AI search changes the way customers find your business](https://startboxventures.in/insights/google-ai-mode-search-2026): Google's AI Overviews and AI Mode now answer questions before anyone clicks. What that means for your website traffic, and six things to do so AI search recommends your business.
 - [Meta wants to make your ads for you. Should you let it?](https://startboxventures.in/insights/meta-automated-ads-2026): Meta is moving towards fully AI-made ads: upload a product and a budget, and its AI does the rest. What that means for small businesses, where it works, and where it quietly wastes money.
 - [Why more ads won't fix falling sales](https://startboxventures.in/insights/why-more-ads-wont-fix-sales): Running Meta or Google ads but sales aren't going up? Here is where the money usually leaks, and the five checks to make before you increase your ad budget.
-- [What a business audit should cover before you spend on marketing](https://startboxventures.in/insights/what-a-business-audit-covers): A marketing or business audit should tell you what is wrong, why, and what to fix first. Here is what a useful audit covers, and what to ignore.
+- [What a free diagnosis should show you before you spend on marketing](https://startboxventures.in/insights/what-a-business-audit-covers): Before you pay for any marketing, someone should tell you what is actually wrong. Here is what a useful first diagnosis looks at, what you should leave with, and the warning signs.
 - [Google Business Profile: a checklist for local businesses](https://startboxventures.in/insights/google-business-profile-checklist): A practical Google Business Profile checklist for shops, clinics, restaurants and service businesses: get found on Google Maps, earn more reviews, and turn views into calls.
 - [What is a sales funnel? A plain-English guide for business owners](https://startboxventures.in/insights/sales-funnel-guide): A sales funnel is the path that turns someone who sees you into someone who pays. A plain-English guide with examples for D2C brands, coaches and service businesses.
 - [Your website gets visits but no enquiries: seven things to check](https://startboxventures.in/insights/website-no-enquiries): If your business website gets traffic but no calls, WhatsApp messages or form fills, check these seven things first. A practical list for business owners.
