@@ -34,7 +34,7 @@ The HTML files are the source. Earlier rules mentioned a Python generator; it wa
 
 ## Products and prices (Ashmita, 28 October 2026; replaces the earlier price list)
 
-There is no paid audit and no "Second Opinion" product. Never show an audit price anywhere. `/business-audit` redirects to `/how-we-work#diagnosis`, and the five old `/services/*` pages redirect to the product anchors on `/services` (their HTML files are still in the repo, unlinked, awaiting a decision on deletion).
+There is no paid audit and no "Second Opinion" product. Never show an audit price anywhere. `/business-audit` redirects to `/how-we-work#diagnosis`, and the five old `/services/*` pages redirect to the product anchors on `/services` (their HTML files were deleted on 28 October 2026; keep the redirects).
 
 Every engagement starts with a free diagnosis: we show you your two biggest problems in the first call (30–40 minutes, with a one-page note afterwards). How we work is three steps: Diagnose (free), Plan (scope and price agreed in writing), Execute.
 
