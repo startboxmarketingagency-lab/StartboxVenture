@@ -1205,3 +1205,22 @@ body::after { content: ""; position: fixed; inset: 0; z-index: -1; pointer-event
 .box-stage { position: absolute; z-index: -1; left: 50%; top: calc(var(--header-h) - 2vh); transform: translateX(-50%); width: min(64vh, 600px); aspect-ratio: 1; pointer-events: none; }
 .box-canvas { width: 100%; height: 100%; display: block; }
 @media (max-width: 900px) { .box-stage { width: min(84vw, 400px); top: calc(var(--header-h) - 16px); } }
+
+/* ===== Diagnosis objects (objects3d.js) ===== */
+.obj-stage { position: relative; }
+.obj-stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.obj-lens { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.obj-fallback-word { position: absolute; left: 50%; top: 44%; transform: translate(-50%, -50%); font-weight: 600; font-size: clamp(120px, 24vw, 420px); letter-spacing: -.06em; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(166, 120, 185, .28); white-space: nowrap; }
+.obj-lens.gl-on .obj-fallback-word { display: none; }
+.obj-ice { height: clamp(300px, 42vh, 420px); margin-top: var(--s4); border-radius: 18px; overflow: hidden; }
+.obj-tag { position: absolute; transform: translate(-50%, -50%); z-index: 2; font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; padding: 7px 11px; border-radius: 99px; white-space: nowrap; color: var(--ivory); pointer-events: none; }
+.obj-tag.up { background: rgba(26, 26, 31, .6); border: 1px solid rgba(240, 217, 181, .25); }
+.obj-tag.down { background: rgba(45, 43, 85, .75); border: 1px solid rgba(166, 120, 185, .5); white-space: normal; text-align: center; width: max-content; max-width: 90%; }
+.obj-ice:not(.gl-on) .obj-tag { position: static; transform: none; display: inline-block; margin: 6px 6px 0 0; }
+.obj-funnel { grid-area: photo; min-height: 320px; border-radius: 14px; overflow: hidden; background: radial-gradient(60% 60% at 50% 40%, rgba(45, 43, 85, .7), rgba(31, 30, 44, 0) 75%); }
+.obj-state { position: absolute; right: 14px; bottom: 12px; font-size: 11px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--lilac); }
+.obj-state b { color: var(--gold); font-weight: 600; }
+.obj-funnel:not(.gl-on) .obj-state { display: none; }
+@media (max-width: 900px) { .obj-funnel { min-height: 280px; } }
+html:not(.motion) .hs-intro, .hs.no-pin .hs-intro { scroll-snap-align: start; }
+html:not(.motion) .hs-track, .hs.no-pin .hs-track { scroll-padding-inline: var(--gutter); }
