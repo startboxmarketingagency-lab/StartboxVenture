@@ -31,9 +31,9 @@ async function boot(canvas, labelsEl) {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-  const GOLD = new THREE.Color('#C4992A'), IVORY = new THREE.Color('#F4F1EA'), STONE = new THREE.Color('#A8A49C');
+  const GOLD = new THREE.Color('#F4A62A'), IVORY = new THREE.Color('#F0D9B5'), STONE = new THREE.Color('#B0A088');
   const scene = new THREE.Scene();
-  scene.fog = new THREE.Fog(0x0a0a0a, 14, 30);
+  scene.fog = new THREE.Fog(0x1a1a1f, 14, 30);
   const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
   camera.position.set(0, 0.6, 15);
 
@@ -51,7 +51,7 @@ async function boot(canvas, labelsEl) {
   const geo = new RoundedBoxGeometry(1.7, 1.05, 0.34, 4, 0.12);
   const edgeGeo = new THREE.EdgesGeometry(new THREE.BoxGeometry(1.72, 1.07, 0.36));
   const blocks = NAMES.map((name, i) => {
-    const mat = new THREE.MeshStandardMaterial({ color: 0x2b2b2b, metalness: 0.5, roughness: 0.36, emissive: 0xc4992a, emissiveIntensity: 0 });
+    const mat = new THREE.MeshStandardMaterial({ color: 0x2d2b55, metalness: 0.5, roughness: 0.36, emissive: 0xf4a62a, emissiveIntensity: 0 });
     const mesh = new THREE.Mesh(geo, mat);
     const edges = new THREE.LineSegments(edgeGeo, new THREE.LineBasicMaterial({ color: STONE.clone(), transparent: true, opacity: 0.35 }));
     mesh.add(edges);
@@ -150,7 +150,7 @@ async function boot(canvas, labelsEl) {
       q.setFromEuler(new THREE.Euler(b.rot0.x + Math.sin(t * 0.3 + b.phase) * 0.15 * idle * (1 - gather), b.rot0.y, b.rot0.z));
       b.mesh.quaternion.copy(q).slerp(qZero, gather);
       // a part glows while the scan reads it, then turns gold once connected
-      b.mat.emissiveIntensity = 0.1 + broken * 0.14 + linked * 0.22;
+      b.mat.emissiveIntensity = 0.04 + broken * 0.1 + linked * 0.16;
       b.edges.material.color.copy(STONE).lerp(GOLD, Math.max(linked, broken * 0.5));
       b.edges.material.opacity = 0.5 + 0.4 * Math.max(linked, broken);
     });

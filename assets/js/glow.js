@@ -26,7 +26,7 @@
     ' float halo=exp(-d*mix(3.4,2.8,v));',
     ' float flow=fbm(q*2.2+vec2(T*1.3,-T*.8));',
     ' float rays=smoothstep(.35,.95,flow);',
-    ' vec3 ink=vec3(.039);vec3 amber=vec3(.34,.19,.04);vec3 gold=vec3(.769,.6,.165);vec3 hot=vec3(1.,.82,.55);',
+    ' vec3 ink=vec3(.102,.102,.122);vec3 amber=vec3(.34,.19,.04);vec3 gold=vec3(.957,.651,.165);vec3 hot=vec3(1.,.82,.55);',
     ' vec3 col=mix(amber,gold,smoothstep(.1,.8,core));',
     ' vec3 c3=ink+col*(halo*.48+core*.85)*(.65+.7*rays)*mix(1.,.6,v)*mix(1.,.62,port);',
     ' c3+=hot*pow(core,5.)*.22;',
