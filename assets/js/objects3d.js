@@ -129,7 +129,7 @@ const BUILD = {
       const d = camera.position.z - plane.position.z;
       viewH = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * d; viewW = viewH * camera.aspect;
       plane.scale.set(viewW, viewH, 1); draw();
-      const ls = st.narrow ? 0.5 : 0.72; lens.scale.setScalar(ls);
+      const ls = st.narrow ? 0.5 : 0.6; lens.scale.setScalar(ls);
     };
     if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => st.onSize());
 
@@ -137,8 +137,8 @@ const BUILD = {
       const idle = !st.touched || performance.now() - st.touched > 2500;
       // drift in the upper part of the hero, away from the headline
       // idle: a slow loop around the headline (wide on desktop, above it on phones)
-      const ax = idle ? Math.sin(t * 0.2) * (st.narrow ? 0.22 : 0.38) : st.tx;
-      const ay = idle ? (st.narrow ? -0.3 + Math.cos(t * 0.2) * 0.05 : -Math.cos(t * 0.2) * 0.31) : st.ty;
+      const ax = idle ? Math.sin(t * 0.2) * (st.narrow ? 0.22 : 0.43) : st.tx;
+      const ay = idle ? (st.narrow ? -0.3 + Math.cos(t * 0.2) * 0.05 : -Math.cos(t * 0.2) * 0.37) : st.ty;
       st.px += (ax - st.px) * 0.05; st.py += (ay - st.py) * 0.05;
       const dz = camera.position.z - lens.position.z, vh = 2 * Math.tan(THREE.MathUtils.degToRad(camera.fov / 2)) * dz, vw = vh * camera.aspect;
       lens.position.x = st.px * vw * 0.9; lens.position.y = -st.py * vh * 0.9;
