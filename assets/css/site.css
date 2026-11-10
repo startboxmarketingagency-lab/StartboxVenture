@@ -1279,3 +1279,5 @@ html:not(.motion) .hs-track, .hs.no-pin .hs-track { scroll-padding-inline: var(-
 @media (max-width: 900px) { .diag.diag-obj { grid-template-columns: 1fr; gap: var(--s4); } .diag-obj .obj-funnel { min-height: 280px; order: 2; } }
 .founders img, .member-photo { display: block; width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 16px; background: var(--charcoal); border: 1px solid var(--line); }
 .member-photo { max-width: 240px; margin-bottom: var(--s3); }
+/* The page itself is always black; the moving background paints over it. */
+html { background: var(--black); }
