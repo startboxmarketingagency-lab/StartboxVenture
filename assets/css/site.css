@@ -1277,3 +1277,5 @@ html:not(.motion) .hs-track, .hs.no-pin .hs-track { scroll-padding-inline: var(-
 .diag-obj .lead { margin-left: 0; }
 .diag-obj .label, .diag-obj .btn-row { justify-content: flex-start; }
 @media (max-width: 900px) { .diag.diag-obj { grid-template-columns: 1fr; gap: var(--s4); } .diag-obj .obj-funnel { min-height: 280px; order: 2; } }
+/* The page itself is always black; the moving background paints over it. */
+html { background: var(--black); }
