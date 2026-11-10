@@ -1393,3 +1393,6 @@ body::before { content: ""; position: fixed; inset: -50%; z-index: 9990; pointer
   .ca-board { height: 88vw; max-height: 440px; }
   .ca-tag { bottom: -20px; }
 }
+
+/* Grain removed (founder feedback: looked cheap) */
+body::before { content: none !important; display: none !important; animation: none !important; }
