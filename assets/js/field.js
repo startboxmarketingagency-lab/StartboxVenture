@@ -15,28 +15,13 @@
     'precision mediump float;uniform vec2 R;uniform float T;uniform float S;',
     'float h(vec2 p){return fract(sin(dot(p,vec2(127.1,311.7)))*43758.5453);}',
     'float n(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.-2.*f);return mix(mix(h(i),h(i+vec2(1,0)),u.x),mix(h(i+vec2(0,1)),h(i+vec2(1,1)),u.x),u.y);}',
-    'float fbm(vec2 p){float v=0.,a=.5;for(int i=0;i<4;i++){v+=a*n(p);p=p*2.03+vec2(1.7,9.2);a*=.5;}return v;}',
-    'void main(){vec2 uv=gl_FragCoord.xy/R;vec2 p=(gl_FragCoord.xy-.5*R)/R.y;float t=T*.06;',
-    ' vec3 ink=vec3(.102,.102,.122),amber=vec3(.957,.651,.165),cream=vec3(.941,.851,.71),violet=vec3(.416,.353,.804);',
-    ' vec3 col=ink;',
-    /* light ribbons: three slow bands of amber light, bent by noise and scroll */
-    ' for(int i=0;i<3;i++){float fi=float(i);',
-    '  float y=.32*sin(p.x*(.9+fi*.25)+t*(1.+fi*.3)+fi*2.1+S*.35)+(fi-1.)*.28+.12*(fbm(p*1.3+vec2(t,fi))-.5);',
-    '  float d=abs(p.y-y);float w=.018+.05*fbm(vec2(p.x*2.+t,fi*3.));',
-    '  float core=exp(-d*d/(w*w)*.6);float halo=exp(-d*6.);',
-    '  vec3 c=mix(amber,cream,core*.6);if(i==2)c=mix(c,violet,.55);',
-    '  col+=c*(core*.16+halo*.035);}',
-    /* data field: a grid of light points that pulse in slow waves */
-    ' vec2 g=gl_FragCoord.xy/R.y*42.;vec2 gi=floor(g),gf=fract(g)-.5;',
-    ' float wave=sin(length(gi*.08-vec2(.0,S*.8))*1.6-t*6.)*.5+.5;float pick=step(.82,h(gi));',
-    ' float dotm=smoothstep(.12,.0,length(gf))*pick*(.15+.85*pow(wave,6.));',
-    ' col+=mix(cream,amber,wave)*dotm*.22;',
-    /* a soft glow that drifts with scroll */
-    ' vec2 gc=vec2(.55*sin(S*.7+t*.5),.25*cos(S*.5));float glow=exp(-length(p-gc)*2.2);',
-    ' col+=amber*glow*.06+violet*exp(-length(p+gc)*2.6)*.03;',
-    /* vignette and grain */
-    ' col*=1.-.35*pow(length(uv-.5)*1.4,2.);',
-    ' col+=(h(gl_FragCoord.xy+fract(T)*61.)-.5)*.03;',
+    'void main(){vec2 uv=gl_FragCoord.xy/R;vec2 p=(gl_FragCoord.xy-.5*R)/R.y;float t=T*.05;',
+    ' vec3 ink=vec3(.102,.102,.122),warm=vec3(.957,.651,.165);',
+    /* one soft warm light, drifting slowly and following the scroll, like a lamp moving across a desk */
+    ' vec2 c=vec2(.45*sin(t*.7+S*.6),.18*cos(t*.5)+.05);',
+    ' float d=length((p-c)*vec2(.8,1.));float l=exp(-d*d*2.2)*(.9+.1*n(p*3.+t));',
+    ' vec3 col=ink+warm*l*.075;',
+    ' col*=1.-.3*pow(length(uv-.5)*1.3,2.);',
     ' gl_FragColor=vec4(col,1.);}'
   ].join('');
   function sh(t, s) { var o = gl.createShader(t); gl.shaderSource(o, s); gl.compileShader(o); return o; }
