@@ -31,7 +31,7 @@ async function boot(canvas, labelsEl) {
   renderer.setClearColor(0x000000, 0);
   renderer.outputColorSpace = THREE.SRGBColorSpace;
 
-  const GOLD = new THREE.Color('#F4A62A'), IVORY = new THREE.Color('#F0D9B5'), STONE = new THREE.Color('#B0A088');
+  const GOLD = new THREE.Color('#FFDE00'), IVORY = new THREE.Color('#FFFFFF'), STONE = new THREE.Color('#A8A8A8');
   const scene = new THREE.Scene();
   scene.fog = new THREE.Fog(0x1a1a1f, 14, 30);
   const camera = new THREE.PerspectiveCamera(35, 1, 0.1, 100);
