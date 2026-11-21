@@ -448,7 +448,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <div class="radar"><div class="sweep"></div><span class="blip" style="left:68%;top:24%"></span><span class="blip" style="left:22%;top:62%;animation-delay:.5s"></span><span class="blip" style="left:58%;top:74%;animation-delay:.9s"></span><svg class="cross" viewBox="0 0 14 14"><path d="M7 0v14M0 7h14" stroke="currentColor" stroke-width="1"/></svg></div>
   <div class="bl mono"><span>Look</span><span>Tone</span><span>Offer</span><span>Place</span></div>
   <div class="br mono">Signal<span class="pct" id="pct">000%</span></div>
-  <div id="gate"><button class="gbtn main" type="button" id="withSound">Enter with sound <small>Penny talks you through it</small></button><button class="gbtn" type="button" id="noSound">Enter quietly</button></div>
+  <div id="gate"><button class="gbtn main" type="button" id="withSound">Enter with sound <small>Penny says hello</small></button><button class="gbtn" type="button" id="noSound">Enter quietly</button></div>
 </div>
 <div id="say" aria-live="polite"><div class="mini" data-char="penny" aria-hidden="true"></div><div class="txt"><b>Penny</b><span id="sayt"></span></div></div>
 <div id="ctag" class="mono" aria-hidden="true">Penny is watching</div>
@@ -724,7 +724,7 @@ var js = document.getElementById('jstick'), jw = document.getElementById('jw'), 
 var bars = js.querySelectorAll('.jsteps .bar i');
 var cur = -1;
 function setStage(i){
-  if (i === cur) return; cur = i;
+  if (i === cur) return; if (cur !== undefined && cur !== -1 && typeof cue==='function') cue('stage'); cur = i;
   var s = J[i];
   js.style.backgroundColor = s.bg;
   js.classList.toggle('light', s.light);
@@ -827,7 +827,7 @@ function countTo(el, to, suf, dec){
   (function s(n){ var k = Math.min(1,(n-st)/900); k = 1-Math.pow(1-k,3); var v = from + (to-from)*k; el.textContent = (dec? v.toFixed(dec) : Math.round(v)) + suf; if (k<1) requestAnimationFrame(s); })(st);
 }
 renderFeed(false);
-var fb = document.getElementById('fixbtn');
+var fb = document.getElementById('fixbtn'); fb.addEventListener('click', function(){ if (typeof cue==='function') cue('fix'); });
 fb.addEventListener('click', function(){
   var on = fb.getAttribute('aria-pressed') !== 'true';
   fb.setAttribute('aria-pressed', on); fb.textContent = on ? 'Show the before' : 'StartBox it';
@@ -965,21 +965,28 @@ function initAudio(){
   musicGain = AC.createGain(); musicGain.gain.value = 0; musicGain.connect(master);
   voiceGain = AC.createGain(); voiceGain.gain.value = 1; analyser = AC.createAnalyser(); analyser.fftSize = 256;
   voiceGain.connect(analyser); analyser.connect(master);
-  // generative pad: slow chord cycle, warm and low
-  var lp = AC.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value = 900; lp.Q.value = .4; lp.connect(musicGain);
-  var chords = [[220,261.6,329.6,392],[174.6,220,261.6,329.6],[196,246.9,293.7,370],[164.8,207.7,246.9,329.6]];
-  var voices = [0,1,2,3].map(function(){ var o = AC.createOscillator(), g = AC.createGain(); o.type='triangle'; g.gain.value = .05; o.connect(g); g.connect(lp); o.start(); return {o:o,g:g}; });
-  var sub = AC.createOscillator(), sg = AC.createGain(); sub.type='sine'; sg.gain.value=.06; sub.connect(sg); sg.connect(lp); sub.start();
+  // calm ambience: soft sine pad, very low, slow drift; no beeps
+  var lp = AC.createBiquadFilter(); lp.type='lowpass'; lp.frequency.value = 520; lp.Q.value = .2; lp.connect(musicGain);
+  var chords = [[130.8,196,261.6],[110,164.8,220],[123.5,185,246.9],[116.5,174.6,233.1]];
+  var voices = [0,1,2].map(function(k){ var o = AC.createOscillator(), g = AC.createGain(); o.type='sine'; o.detune.value = (k-1)*4; g.gain.value = .035; o.connect(g); g.connect(lp); o.start(); return {o:o,g:g}; });
   var ci = 0;
-  function nextChord(){ var c = chords[ci%chords.length], t = AC.currentTime; voices.forEach(function(v,k){ v.o.frequency.setTargetAtTime(c[k], t, 0.9); }); sub.frequency.setTargetAtTime(c[0]/2, t, 0.9); ci++; }
-  nextChord(); setInterval(nextChord, 6000);
-  // soft pulse
-  setInterval(function(){ if (!soundOn) return; var o = AC.createOscillator(), g = AC.createGain(), t = AC.currentTime; o.type='sine'; o.frequency.value = 880 + (ci%2)*220; g.gain.setValueAtTime(0,t); g.gain.linearRampToValueAtTime(.018,t+.02); g.gain.exponentialRampToValueAtTime(.0001,t+1.4); o.connect(g); g.connect(lp); o.start(t); o.stop(t+1.5); }, 1500);
+  function nextChord(){ var c = chords[ci%chords.length], t = AC.currentTime; voices.forEach(function(v,k){ v.o.frequency.setTargetAtTime(c[k], t, 3.5); }); ci++; }
+  nextChord(); setInterval(nextChord, 14000);
+  document.addEventListener('visibilitychange', function(){ if (!AC) return; if (document.hidden) AC.suspend(); else if (soundOn) AC.resume(); });
+}
+/* soft cues on real actions only */
+function cue(kind){
+  if (!soundOn || !AC) return;
+  var t = AC.currentTime, g = AC.createGain(); g.connect(master);
+  var notes = kind==='fix' ? [659.3, 987.8] : [392];
+  notes.forEach(function(f,i){ var o = AC.createOscillator(), og = AC.createGain(); o.type='sine'; o.frequency.value = f;
+    og.gain.setValueAtTime(0, t+i*.09); og.gain.linearRampToValueAtTime(kind==='fix'?.05:.025, t+i*.09+.015); og.gain.exponentialRampToValueAtTime(.0001, t+i*.09+(kind==='fix'?.9:.35));
+    o.connect(og); og.connect(g); o.start(t+i*.09); o.stop(t+i*.09+1); });
 }
 var sndBtn = document.getElementById('snd');
 function setSound(on){
   soundOn = on; sndBtn.classList.toggle('on', on); sndBtn.setAttribute('aria-pressed', on); sndBtn.setAttribute('aria-label', on ? 'Turn sound off' : 'Turn sound on');
-  if (on){ initAudio(); if (!AC) return; AC.resume(); musicGain.gain.setTargetAtTime(.55, AC.currentTime, 1.2); }
+  if (on){ initAudio(); if (!AC) return; AC.resume(); musicGain.gain.setTargetAtTime(.35, AC.currentTime, 2.5); }
   else if (AC){ musicGain.gain.setTargetAtTime(0, AC.currentTime, .3); if (curAudio){ curAudio.pause(); } }
   try { sessionStorage.setItem('sbSound', on ? '1':'0'); } catch(e){}
 }
@@ -990,7 +997,7 @@ function enter(withSound){
   try{ sessionStorage.setItem('sbBoot','1'); }catch(e){}
   if (withSound) setSound(true);
   ready();
-  setTimeout(function(){ speak('hero'); }, 1500);
+  setTimeout(function(){ speak('hero'); speak('hero2'); }, 1500);
 }
 document.getElementById('withSound').addEventListener('click', function(){ enter(true); });
 document.getElementById('noSound').addEventListener('click', function(){ enter(false); });
@@ -1008,8 +1015,8 @@ function next(){
   if (soundOn && AC && window.PV && PV[id]){
     curAudio = new Audio(PV[id]); 
     try { var src = AC.createMediaElementSource(curAudio); src.connect(voiceGain); } catch(e){}
-    musicGain.gain.setTargetAtTime(.18, AC.currentTime, .15);
-    curAudio.onended = function(){ musicGain.gain.setTargetAtTime(soundOn?.55:0, AC.currentTime, .6); done(); };
+    musicGain.gain.setTargetAtTime(.06, AC.currentTime, .15);
+    curAudio.onended = function(){ musicGain.gain.setTargetAtTime(soundOn?.35:0, AC.currentTime, 1.2); done(); };
     curAudio.play().catch(function(){ setTimeout(done, dur); });
   } else setTimeout(done, dur);
 }
