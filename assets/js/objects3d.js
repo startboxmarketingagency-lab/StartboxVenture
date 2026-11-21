@@ -101,10 +101,10 @@ const BUILD = {
       // the giant editorial word
       const fs = Math.min(W * 0.24, H * 0.42);
       g.font = `600 ${fs}px ${font}`; g.textAlign = 'center'; g.textBaseline = 'middle';
-      g.lineWidth = Math.max(1, 1.4 * dpr); g.strokeStyle = 'rgba(166,120,185,.32)';
+      g.lineWidth = Math.max(1, 1.4 * dpr); g.strokeStyle = 'rgba(214, 214, 214,.32)';
       g.strokeText('diagnose', W / 2, H * 0.44);
       // what a diagnosis looks at
-      g.font = `500 ${Math.max(12, 15 * s) * (st.narrow ? 1.3 : 1)}px ${font}`; g.fillStyle = 'rgba(166,120,185,.75)';
+      g.font = `500 ${Math.max(12, 15 * s) * (st.narrow ? 1.3 : 1)}px ${font}`; g.fillStyle = 'rgba(214, 214, 214,.75)';
       const words = ['offer', 'website', 'ads', 'follow-up', 'pricing', 'trust', 'reviews', 'sales calls'];
       const spots = st.narrow
         ? [[.22, .15], [.8, .19], [.2, .93], [.8, .91]]

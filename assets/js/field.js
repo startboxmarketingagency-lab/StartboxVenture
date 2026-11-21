@@ -20,7 +20,7 @@
     ' float t=T*.035;',
     ' vec2 q=vec2(fbm(p+vec2(t,0.)),fbm(p+vec2(-t*.8,t*.6)+3.1));',
     ' float f=fbm(p+q*1.8+vec2(0.,S*.6));',
-    ' vec3 ink=vec3(.102,.102,.122),indigo=vec3(.176,.169,.333),violet=vec3(.416,.353,.804),amber=vec3(.957,.651,.165);',
+    ' vec3 ink=vec3(.03,.03,.03),indigo=vec3(.10,.10,.10),violet=vec3(.22,.22,.22),amber=vec3(1.,.87,0.);',
     ' vec3 col=ink;',
     ' col=mix(col,indigo,smoothstep(.55,.95,f)*.28);',
     ' col+=violet*pow(smoothstep(.7,1.,f),2.)*.05;',
