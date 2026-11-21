@@ -1279,3 +1279,32 @@ html:not(.motion) .hs-track, .hs.no-pin .hs-track { scroll-padding-inline: var(-
 @media (max-width: 900px) { .diag.diag-obj { grid-template-columns: 1fr; gap: var(--s4); } .diag-obj .obj-funnel { min-height: 280px; order: 2; } }
 /* The page itself is always black; the moving background paints over it. */
 html { background: var(--black); }
+
+/* ===== Brand v3 layer (21 Nov 2026): inner pages speak the homepage's language ===== */
+h1, h2, h3, h4 { font-weight: 800; }
+h1, h2 { letter-spacing: -.05em; line-height: .95; }
+.stat b, .price b, .hero2-meta div b, .mq-row span, .hs-card q, .hs-end p, .proc-count b, .big-stats b, .hero3-stats b, .where-item b, .reach-col li { font-weight: 800; }
+.gold { text-shadow: none !important; }
+.label { color: #8A8A8A; font-size: 11px; font-weight: 500; letter-spacing: .16em; }
+/* hero: left-aligned, heavy, no aura */
+.page-hero { text-align: left; min-height: min(72svh, 760px); justify-content: flex-end; border-bottom: 1px solid #1C1C1C; }
+.page-hero > canvas.shader, .page-hero canvas[data-shader] { display: none !important; }
+.page-hero h1 { font-size: clamp(52px, 8.6vw, 150px); max-width: 13ch; margin-left: 0; margin-right: 0; letter-spacing: -.055em; line-height: .92; text-shadow: none; }
+.article-head.page-hero h1 { font-size: clamp(38px, 5.6vw, 84px); max-width: 20ch; }
+.page-hero .lead, .page-hero p { margin-left: 0; margin-right: 0; max-width: 56ch; color: #D6D6D6; }
+.page-hero .crumbs ol, .page-hero .btn-row, .page-hero .article-meta, .page-hero .label { justify-content: flex-start; }
+.page-hero .hero-grid { justify-items: start; }
+/* closing card: black, hairline, one yellow word */
+.cta-card { border: 1px solid #262626; background: #0B0B0B; }
+.cta-card > canvas.shader { display: none !important; }
+.cta-card::after { display: none; }
+.cta-band h2 { font-size: clamp(40px, 6vw, 92px); max-width: 16ch; letter-spacing: -.05em; line-height: .95; }
+@media (max-width: 760px) {
+  .page-hero { min-height: auto; }
+  .page-hero h1 { font-size: clamp(44px, 12.4vw, 72px); }
+}
+/* calmer living background: homepage-like near-black, motion still visible */
+.bg-field { opacity: .38; }
+/* no squares before labels or titles (site rule) */
+.label::before, .ticks li::before, .promise p::before { display: none !important; }
+.ticks li { padding-left: 0 !important; }
