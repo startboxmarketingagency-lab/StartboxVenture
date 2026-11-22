@@ -1308,3 +1308,13 @@ h1, h2 { letter-spacing: -.05em; line-height: .95; }
 /* no squares before labels or titles (site rule) */
 .label::before, .ticks li::before, .promise p::before { display: none !important; }
 .ticks li { padding-left: 0 !important; }
+/* no yellow aura anywhere (brand v3); business-card hero speaks the homepage language */
+canvas[data-shader] { display: none !important; }
+.meet-hero, .hero3 { text-align: left; }
+.meet-hero h1, .hero3 h1 { font-size: clamp(48px, 7.6vw, 128px); max-width: 14ch; margin-left: 0; margin-right: 0; letter-spacing: -.055em; line-height: .92; }
+.meet-hero .lead, .hero3 .lead, .meet-hero p, .hero3 p { margin-left: 0; margin-right: 0; }
+.meet-hero .btn-row, .hero3 .btn-row, .hero3 .hero3-stats, .meet-hero .label, .hero3 .label { justify-content: flex-start; margin-left: 0; }
+.hero3-row { align-items: flex-start; }
+.hero3-row .lead { margin: 0; }
+.hero3-row .btn-row, .meet-actions { justify-content: flex-start; }
+.meet-hero .pill { margin-left: 0; }
